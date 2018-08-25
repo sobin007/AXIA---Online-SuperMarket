@@ -43,9 +43,9 @@
             </a>
           </li>
           <li class="active" >
-            <a href="<?php echo site_url('account/addstaff');?>">
+            <a href="<?php echo site_url('account/staff');?>">
               <i class="now-ui-icons design_app"></i>
-              <p>ADD STAFF</p>
+              <p>STAFF</p>
             </a>
           </li>
           <li>
@@ -105,7 +105,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Add Staff</a>
+            <a class="navbar-brand" href="#pablo">Staff</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>

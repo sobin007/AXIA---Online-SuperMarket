@@ -174,14 +174,14 @@ class Account extends CI_Controller {
         // $this->load->view('templates/footer');
     }
 
-    public function addstaff() {
+    public function staff() {
 
         $data['title'] = 'ADMIN';
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
 
-        $this->load->view('admin/addstaff');
+        $this->load->view('admin/staff');
         // $this->load->view('templates/footer');
     }
     
