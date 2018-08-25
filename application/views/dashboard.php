@@ -66,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
         <div class="w3ls_logo_products_left">
-				<h1><a href="index.html">super Market</a></h1>
+				<h1><a href="index.html">AXIA</a></h1>
 			</div>
 		<div class="w3ls_logo_products_left1">
 				<!-- <ul class="phone_email">
