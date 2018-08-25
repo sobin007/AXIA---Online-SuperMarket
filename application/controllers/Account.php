@@ -106,20 +106,6 @@ class Account extends CI_Controller {
         // $this->load->view('templates/footer');
     }
 
-    public function admin() {
-
-        $data['title'] = 'ADMIN';
-        if ($this->session->userdata('logged_in')) {
-            $data['session_user'] = $this->session_user;
-        }
-
-        $this->load->view('admin/home');
-        // $this->load->view('templates/footer');
-    }
-
-    /**
-     *           
-     */
     public function forgot_password() {
         $data['title'] = 'Forgot password';
         $this->load->model('auth_model');
@@ -174,6 +160,29 @@ class Account extends CI_Controller {
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");
         redirect(base_url('/'));
+    }
+
+
+    public function admin() {
+
+        $data['title'] = 'ADMIN';
+        if ($this->session->userdata('logged_in')) {
+            $data['session_user'] = $this->session_user;
+        }
+
+        $this->load->view('admin/home');
+        // $this->load->view('templates/footer');
+    }
+
+    public function addstaff() {
+
+        $data['title'] = 'ADMIN';
+        if ($this->session->userdata('logged_in')) {
+            $data['session_user'] = $this->session_user;
+        }
+
+        $this->load->view('admin/addstaff');
+        // $this->load->view('templates/footer');
     }
     
 }

@@ -43,7 +43,7 @@
             </a>
           </li>
           <li >
-            <a href="<?php echo site_url('account/addstaff');?>">
+            <a href="./dashboard.html">
               <i class="now-ui-icons design_app"></i>
               <p>ADD STAFF</p>
             </a>
@@ -158,9 +158,9 @@
         </div>
       </nav>
       <!-- End Navbar -->
-      <div class="panel-header panel-header-lg">
+      <!-- <div class="panel-header panel-header-lg">
         <canvas id="bigDashboardChart"></canvas>
-      </div>
+      </div> -->
       <div class="content">
         <div class="row">
           <div class="col-lg-4">
