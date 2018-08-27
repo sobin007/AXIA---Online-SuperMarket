@@ -996,7 +996,7 @@ a.w3_agile_vimeo:hover{
 /*-- //login --*/
 /*-- register --*/
 .register {
-    padding: 5em 0;
+    padding: 1em 0;
 }
 .login-form-grids h5,.login-form-grids h6{
 	font-size:1em;
@@ -1005,7 +1005,8 @@ a.w3_agile_vimeo:hover{
 	margin:0 0 2em;
 }
 .login-form-grids input[type="text"]{
-	background:url(../images/img-sp.png) no-repeat 5px -259px #fff;
+    background:url(../images/img-sp.png) no-repeat 5px -259px #fff;
+    margin: 1em 0 0;
 }
 .login-form-grids input[type="text"]:nth-child(2){
 	background:url(../images/img-sp.png) no-repeat 0px -298px #fff;

@@ -21,6 +21,7 @@ class Dashboard extends CI_Controller {
     public function index() {
 
         $data['title'] = 'Dashboard';
+        $user = $this->session->userdata('logged_in');
         
         if (!$this->session->userdata('logged_in')) {
 
@@ -28,12 +29,15 @@ class Dashboard extends CI_Controller {
 
         }else {
             $data['session_user'] = $this->session_user;
-            /*
-             * Load view
-             */
-            $this->load->view('templates/homeheader', $data);
-            $this->load->view('templates/home');
-            $this->load->view('templates/footer');
+
+            if($user['role'] == 8) {
+                redirect(base_url('account/admin'));
+                exit;
+            }else{
+                $this->load->view('templates/homeheader', $data);
+                $this->load->view('templates/home');
+                $this->load->view('templates/footer');
+            }
         }
     }
 }

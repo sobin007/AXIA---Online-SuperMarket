@@ -40,9 +40,16 @@ class Account extends CI_Controller {
         }
 
         if ($this->session->userdata('logged_in')) {
-            redirect(base_url('dashboard'));
-            exit;
+            $user = $this->session->userdata('logged_in');
+            if($user['role'] == 8) {
+                redirect(base_url('account/admin'));
+                exit;
+            }else{
+                redirect(base_url('dashboard'));
+                exit;
+            }
         }
+
         $this->load->view('templates/header',$data);
         $this->load->view('templates/login');
         $this->load->view('templates/footer');
@@ -176,13 +183,82 @@ class Account extends CI_Controller {
 
     public function staff() {
 
-        $data['title'] = 'ADMIN';
+        $data['title'] = 'Add Staff';
+        $this->load->model('auth_model');
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
 
+        if (count($_POST)) {
+            $this->load->helper('security');
+
+            $this->form_validation->set_rules('first_name', 'First name', 'trim|required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+
+            $this->form_validation->set_rules('password', 'Password', 'trim|required');
+            $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
+            
+            if ($this->form_validation->run() == false) {
+                $data['notif']['message'] = validation_errors();
+                $data['notif']['type'] = 'danger';
+            } 
+            else {
+                $data['notif'] = $this->auth_model->addstaff_to_users();
+                $user_id = $data['notif']['user_id'];
+                $data = array(
+                    'phone' => $this->input->post('phone'),
+                    'address' => $this->input->post('address'),
+                    'gender' => $this->input->post('gender'),
+                    'designation' => $this->input->post('designation'),
+                    'salary' => $this->input->post('salary'),
+                    'dob' => $this->input->post('dob'),
+                    'user_id' =>$user_id
+                );
+                $data['notif'] = $this->auth_model->addstaff_to_staff($data);
+
+            }
+        }
+
         $this->load->view('admin/staff');
-        // $this->load->view('templates/footer');
+    }
+
+    public function addstaff() {
+        $data['title'] = 'Add Staff';
+        $this->load->model('auth_model');
+        $staff = $this->input->post('first_name');
+        echo $staff;
+        if (count($_POST)) {
+            $this->load->helper('security');
+
+            $this->form_validation->set_rules('first_name', 'First name', 'trim|required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+
+            $this->form_validation->set_rules('password', 'Password', 'trim|required');
+            $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
+            
+            if ($this->form_validation->run() == false) {
+                $data['notif']['message'] = validation_errors();
+                $data['notif']['type'] = 'danger';
+            } 
+            else {
+                $data['notif'] = $this->auth_model->addstaff_to_users();
+                $user_id = $data['notif']['user_id'];
+                $data = array(
+                    'phone' => $this->input->post('phone'),
+                    'address' => $this->input->post('address'),
+                    'gender' => $this->input->post('gender'),
+                    'designation' => $this->input->post('designation'),
+                    'salary' => $this->input->post('salary'),
+                    'dob' => $this->input->post('dob'),
+                    'user_id' =>$user_id
+                );
+                $data['notif'] = $this->auth_model->addstaff_to_staff($data);
+
+            }
+        }
+        $this->load->view('admin/staff',$data);
     }
     
 }

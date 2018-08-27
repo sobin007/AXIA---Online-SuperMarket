@@ -263,6 +263,95 @@
           </div>
         </div>
       </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Add Staff</h5>
+              </div>
+              <div class="card-body">
+                <form method="post" action="addstaff" class="form-horizontal" role="form">
+                <?php if(!empty(@$notif)){ ?>
+                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>">
+                        <p><?php echo @$notif['message'];?></p>
+                        <span></span>
+                    </div>
+                    <?php } ?>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo $this->input->post('first_name');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" placeholder="Email" value="<?php echo $this->input->post('email');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="text" class="form-control" placeholder="Confirm password" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Designation</label>
+                        <input type="text" class="form-control" placeholder="Designation" value="<?php echo $this->input->post('designation');?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" class="form-control" placeholder="dob" value="<?php echo $this->input->post('dob');?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Salary</label>
+                        <input type="number" class="form-control" placeholder="Salary" value="<?php echo $this->input->post('salary');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <input type="submit" class="form-control" style="background :#3399cc" value="Add Staff">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       <footer class="footer">
         <div class="container-fluid">
           <nav>
