@@ -145,13 +145,24 @@
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="now-ui-icons  users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
+                <!-- <a class="nav-link" href="#pablo">
+                  <i class="now-ui-icons users_single-02"></i>
+                  <p>
+                    <span class="d-lg-none d-md-block">Account</span>
+                  </p>
+                </a> -->
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="<?php echo site_url('account/change_password');?>">Change Password</a>
+                  <a class="dropdown-item" href="<?php echo site_url('account/logout');?>">Logout</a>
+                </div>
               </li>
             </ul>
           </div>
@@ -171,90 +182,25 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>
-                        Name
-                      </th>
-                      <th>
-                        Country
-                      </th>
-                      <th>
-                        City
-                      </th>
-                      <th class="text-right">
-                        Salary
-                      </th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Phone</th>
+                      <th>Designation</th>
+                      <th>Salary</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-right">
-                          $36,738
-                        </td>
+                    <?php  
+                     foreach ($staff->result() as $row)  
+                      {  
+                      ?><tr>  
+                      <td><?php echo $row->first_name;?></td>  
+                      <td><?php echo $row->address;?></td>
+                      <td><?php echo $row->phone;?></td>
+                      <td><?php echo $row->designation;?></td>
+                      <td><?php echo $row->salary;?></td>  
                       </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-right">
-                          $23,789
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-right">
-                          $56,142
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-right">
-                          $63,542
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $78,615
-                        </td>
-                      </tr>
+                    <?php }  
+                      ?> 
                     </tbody>
                   </table>
                 </div>
@@ -262,13 +208,13 @@
             </div>
           </div>
         </div>
-      </div>
+      
       <div class="content">
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">Add Staff</h5>
+                <h4 class="card-title">Add Staff</h4>
               </div>
               <div class="card-body">
                 <form method="post" action="addstaff" class="form-horizontal" role="form">
@@ -288,7 +234,7 @@
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
+                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
                       </div>
                     </div>
                   </div>
@@ -296,27 +242,33 @@
                   <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" placeholder="Email" value="<?php echo $this->input->post('email');?>">
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $this->input->post('email');?>">
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="text" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
+                        <input type="text"  name="password" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Confirm Password</label>
-                        <input type="text" class="form-control" placeholder="Confirm password" >
+                        <input type="text" name="confirm_password" class="form-control" placeholder="Confirm password" >
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                       <div class="form-group">
                         <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+                        <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $this->input->post('phone');?>" >
                       </div>
                     </div>
                   </div>
@@ -324,19 +276,29 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>Designation</label>
-                        <input type="text" class="form-control" placeholder="Designation" value="<?php echo $this->input->post('designation');?>" >
+                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="<?php echo $this->input->post('designation');?>" >
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Date of Birth</label>
-                        <input type="date" class="form-control" placeholder="dob" value="<?php echo $this->input->post('dob');?>" >
+                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $this->input->post('dob');?>" >
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Salary</label>
-                        <input type="number" class="form-control" placeholder="Salary" value="<?php echo $this->input->post('salary');?>">
+                        <input type="number" name="salary" class="form-control" placeholder="Salary" value="<?php echo $this->input->post('salary');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      </div class="form-group" >
+                      <label>Gender</label>
+                      <input type="radio" name="gender" checked="checked" value="male"> Male<br>
+                      <input type="radio" name="gender" value="female"> Female<br>
+                      <input type="radio" name="gender" value="other"> Other
                       </div>
                     </div>
                   </div>
@@ -351,6 +313,7 @@
               </div>
             </div>
           </div>
+        </div>
         </div>
       <footer class="footer">
         <div class="container-fluid">

@@ -45,7 +45,7 @@
           <li >
             <a href="<?php echo site_url('account/staff');?>">
               <i class="now-ui-icons design_app"></i>
-              <p>ADD STAFF</p>
+              <p>Staff</p>
             </a>
           </li>
           <li>

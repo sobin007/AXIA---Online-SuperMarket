@@ -39,10 +39,7 @@ class Auth_model extends CI_Model
         return $notif;
     }
 
-    /*
-     * 
-     */
-
+    
     private function update_last_login($users_id) {
         $sql = "UPDATE users SET last_login = NOW() WHERE users_id=" . $this->db->escape($users_id);
         $this->db->query($sql);
@@ -124,6 +121,16 @@ class Auth_model extends CI_Model
             $notif['type'] = 'danger';
         }
         return $notif;
+    }
+
+    public function getstaff() {
+        $notif = array();
+    
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->join('users', 'users.users_id = staff.user_id'); 
+        $query = $this->db->get();
+        return $query; 
     }
 
 }
