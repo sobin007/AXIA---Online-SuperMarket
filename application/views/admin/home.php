@@ -84,12 +84,6 @@
               <p>Typography</p>
             </a>
           </li>
-          <!-- <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li> -->
         </ul>
       </div>
     </div>
@@ -152,12 +146,6 @@
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-                <!-- <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a> -->
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="<?php echo site_url('account/change_password');?>">Change Password</a>

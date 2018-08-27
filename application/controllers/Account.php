@@ -209,7 +209,7 @@ class Account extends CI_Controller {
             $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
             
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
-            $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric');
+            $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric|is_unique[staff.phone]');
             $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
             $this->form_validation->set_rules('salary', 'Salary', 'trim|required');
             $this->form_validation->set_rules('dob', 'Date of Birth', 'trim|required');

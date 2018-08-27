@@ -208,7 +208,6 @@
             </div>
           </div>
         </div>
-      
       <div class="content">
         <div class="row">
           <div class="col-md-12">
@@ -296,24 +295,22 @@
                     <div class="col-md-4 pr-1">
                       </div class="form-group" >
                       <label>Gender</label>
-                      <input type="radio" name="gender" checked="checked" value="male"> Male<br>
-                      <input type="radio" name="gender" value="female"> Female<br>
-                      <input type="radio" name="gender" value="other"> Other
+                      <input type="radio" name="gender" checked="checked" value="male"> Male
+                      <input type="radio" name="gender" value="female"> Female
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-3">
+                      </div>
+                      <div class="col-md-4 px-1">
                       <div class="form-group">
-                        <input type="submit" class="form-control" style="background :#3399cc" value="Add Staff">
+                      <input type="submit" class="form-control" style="background :#3399cc" value="Add Staff">
+                      <div>
                       </div>
                     </div>
                   </div>
+                 
                 </form>
               </div>
             </div>
           </div>
-        </div>
         </div>
       <footer class="footer">
         <div class="container-fluid">
