@@ -36,8 +36,8 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="./dashboard.html">
+          <li >
+            <a href="<?php echo site_url('account/admin');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
@@ -48,7 +48,7 @@
               <p>Staff</p>
             </a>
           </li>
-          <li>
+          <li class="active" >
             <a href="<?php echo site_url('category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>

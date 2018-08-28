@@ -27,17 +27,17 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="" class="simple-text logo-mini">
           
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal">
           <strong>AXIA</strong>
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="./dashboard.html">
+          <li >
+            <a href="<?php echo site_url('account/admin');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
@@ -48,13 +48,13 @@
               <p>Staff</p>
             </a>
           </li>
-          <li>
+          <li >
             <a href="<?php echo site_url('category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="<?php echo site_url('product/product');?>">
               <i class="now-ui-icons location_map-big"></i>
               <p>Product</p>

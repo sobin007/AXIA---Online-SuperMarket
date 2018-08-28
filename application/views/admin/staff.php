@@ -49,15 +49,15 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="<?php echo site_url('category/category');?>">
               <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
+              <p>Category</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="<?php echo site_url('product/product');?>">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
+              <p>Product</p>
             </a>
           </li>
           <li>

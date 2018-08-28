@@ -83,10 +83,6 @@ class Account extends CI_Controller {
             exit;
         }
 
-
-        /*
-         * Load view
-         */
         $this->load->view('templates/header', $data);
         $this->load->view('templates/register');
         $this->load->view('templates/footer');
@@ -107,10 +103,8 @@ class Account extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
-
         $this->load->view('templates/headerprofile', $data);
         $this->load->view('templates/account');
-        // $this->load->view('templates/footer');
     }
 
     public function forgot_password() {
@@ -138,17 +132,10 @@ class Account extends CI_Controller {
             }
         }
 
-        /*
-         * Load view
-         */
         $this->load->view('templates/header', $data);
         $this->load->view('templates/forgot_password');
         $this->load->view('templates/footer');
     }
-
-    /*
-     * Custom callback function
-     */
 
     public function password_check($str) {
         if (preg_match('#[0-9]#', $str) && preg_match('#[a-zA-Z]#', $str)) {
@@ -156,10 +143,6 @@ class Account extends CI_Controller {
         }
         return false;
     }
-    
-        /*
-     * 
-     */
 
     public function logout() {
         $this->session->unset_userdata('logged_in');
@@ -176,9 +159,7 @@ class Account extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
-
         $this->load->view('admin/home');
-        // $this->load->view('templates/footer');
     }
 
     public function staff() {
@@ -235,6 +216,15 @@ class Account extends CI_Controller {
             }
         }
         $this->load->view('admin/staff',$data);
+    }
+
+    public function category() {
+
+        $data['title'] = 'Category';
+        if ($this->session->userdata('logged_in')) {
+            $data['session_user'] = $this->session_user;
+        }
+        $this->load->view('admin/category',$data);
     }
     
 }
