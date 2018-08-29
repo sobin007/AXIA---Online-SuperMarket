@@ -3404,4 +3404,17 @@ td.invert-image a img {
 .w3agile_description p {
     font-size: 13px;
 }
+.al{
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:20px;
+}
+.product_list_header span {
+    color: #fe9126;
+    top: 0.1em;
+}
+.nav>li>a:focus {
+    text-decoration: none;
+    background: rgba(255, 170, 0, 0.11);
+}
 }

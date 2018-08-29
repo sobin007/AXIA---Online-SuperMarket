@@ -103,8 +103,7 @@ class Account extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
-        $this->load->view('templates/headerprofile', $data);
-        $this->load->view('templates/account');
+        $this->load->view('templates/account',$data);
     }
 
     public function forgot_password() {
