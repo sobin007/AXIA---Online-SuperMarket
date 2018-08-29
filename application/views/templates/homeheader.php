@@ -50,21 +50,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }
 </style>
 <!-- header -->
-	<div class="agileits_header">
-		<div class="container">
-			<!-- <div class="w3l_offers">
-				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
-			</div> -->
-			<div class="agile-login">
-             
-			</div>
-			<div class="product_list_header">  
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
+<div class="agileits_header">
+	<div class="container">
+    <div class="w3ls_logo_products_left">
+		<h1><a href="<?php echo site_url('/');?>">AXIA</a></h1>
+    </div>
+    <div class="w3l_search">
+		<form action="#" method="post">
+			<input type="search" name="Search" placeholder="Search for a Product..." required="">
+			<button type="submit" class="btn btn-default search" aria-label="Left Align">
+				<i class="fa fa-search" aria-hidden="true"> </i>
+			</button>
+			<div class="clearfix"></div>
+		</form>
+	</div>
+	<div class="product_list_header">  
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
                         <span><?php echo $session_user['first_name'];?></span>
-                      
                     </a>
                     <ul class="dropdown-menu al">
                         <li>
@@ -126,43 +131,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                     </ul>
                 </li>
-            </ul>       </div>
-                        </li>
-                    </ul>
-                </li>
-			</div>
-					
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-
-	<div class="logo_products">
-		<div class="container">
-        <div class="w3ls_logo_products_left">
-				<h1><a href="index.html">AXIA</a></h1>
-			</div>
-		<div class="w3ls_logo_products_left1">
-				<!-- <ul class="phone_email">
-					<li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
-					
-				</ul> -->
-		</div>
-		<div class="w3l_search">
-			<form action="#" method="post">
-				<input type="search" name="Search" placeholder="Search for a Product..." required="">
-				<button type="submit" class="btn btn-default search" aria-label="Left Align">
-					<i class="fa fa-search" aria-hidden="true"> </i>
-				</button>
-				<div class="clearfix"></div>
-			</form>
-		</div>
-			
-			<div class="clearfix"> 
-            </div>
-		</div>
-        <div>
+            </ul>       
         </div>
-      
-	</div>
+    </div>
+</div>
 <!-- //header -->

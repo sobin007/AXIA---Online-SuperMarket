@@ -89,7 +89,7 @@ input[type="submit"],#PPMiniCart .minicart-submit,.w3ls_vegetables ul li a,input
     text-decoration: none;
 }
 .w3l_search {
-    float: right;
+    float: left;
     width: 25.33%;
     margin: 0em 0 0em 0em;
 }
@@ -181,11 +181,11 @@ button.w3view-cart:focus{
 	outline:none;
 }
 .logo_products {
-    padding: 2em 0;
+    padding: em 0;
 }
 .w3ls_logo_products_left {
     float: left;
-    text-align: center;
+    text-align: left;
     width: 33.33%;
 }
 .w3ls_logo_products_left h1 a{
