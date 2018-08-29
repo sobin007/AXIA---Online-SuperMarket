@@ -49,7 +49,7 @@
 		<div class="footer-copy">
 			
 			<div class="container">
-				<p>© 2017 Super Market. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<p>© 2018 AXIA Super Market. All rights reserved | Design by <a href="#">Double7Company</a></p>
 			</div>
 		</div>
 		
