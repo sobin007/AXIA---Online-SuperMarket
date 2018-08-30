@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -22,15 +21,12 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="blue">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+    <div class="sidebar" data-color="orange">
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="#" class="simple-text logo-mini">
           
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="#" class="simple-text logo-normal">
           AXIA
         </a>
       </div>
@@ -43,45 +39,27 @@
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="#">
               <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
+              <p>My Orders</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="#">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
+              <p>Payments</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="#">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li >
-            <a href="./user.html">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+              <p>WishList</p>
             </a>
           </li>
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="#">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
+              <p>Log Out</p>
             </a>
           </li>
         </ul>
@@ -99,7 +77,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">User Profile</a>
+            <a class="navbar-brand" href="#pablo">Personal Information</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -163,81 +141,62 @@
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <div class="card-header">
-                <h5 class="title">Edit Profile</h5>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" class="form-control" placeholder="Company" value="<?php echo $session_user['first_name'];?>">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" value="<?php echo $session_user['last_name'];?>">
-                      </div>
-                    </div>
-				  </div>
-				  <div class="row">
-                    <div class="col-md-5 pr-1">
-                      <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" disabled="" placeholder="Company" value="<?php echo $session_user['email'];?>">
-                      </div>
-                    </div>
-                    <div class="col-md-3 px-1">
-                      <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username" value="michael23">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" placeholder="Email">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>City</label>
-                        <input type="text" class="form-control" placeholder="City" value="Mike">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Country</label>
-                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Postal Code</label>
-                        <input type="number" class="form-control" placeholder="ZIP Code">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>About Me</label>
-                        <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                      </div>
-                    </div>
-                  </div>
+              	<div class="card-header">
+                	<h5 class="title">Personal Information</h5>
+              	</div>
+              	<div class="card-body">
+                	<form  method="post" action="" class="form-horizontal" role="form">
+						<?php if(!empty(@$notif)){ ?>
+                    		<div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>">
+                        		<p><?php echo @$notif['message'];?></p>
+                        		<span></span>
+                    		</div>
+                    	<?php } ?>
+                  		<div class="row">
+                    		<div class="col-md-6 pr-1">
+                      			<div class="form-group">
+                        			<label>First Name</label>
+                        			<input type="text" class="form-control" placeholder="Company" value="<?php echo $session_user['first_name'];?>">
+                      			</div>
+                    		</div>
+                    		<div class="col-md-6 pl-1">
+                      			<div class="form-group">
+                        			<label>Last Name</label>
+                        			<input type="text" class="form-control" placeholder="Last Name" value="<?php echo $session_user['last_name'];?>">
+                      			</div>
+                    		</div>
+				  		</div>
+						<div class="row">
+							<div class="col-md-5 pr-1">
+								<div class="form-group">
+									<label>Email</label>
+									<input type="text" class="form-control" disabled="" placeholder="Company" value="<?php echo $session_user['email'];?>">
+								</div>
+							</div>
+							<div class="col-md-4 pl-1">
+								<div class="form-group">
+									<label for="exampleInputEmail1">Mobile Number</label>
+									<input type="phone" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $this->input->post('phone');?>">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label>Address</label>
+									<input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 px-1">
+								<div class="form-group">
+									<input type="submit" class="form-control" style="background :#3399cc ;color:#fff" value="Add Staff">
+								<div>
+							</div>
+						</div>
+					</div>
+					</div>
                 </form>
               </div>
             </div>
@@ -254,7 +213,7 @@
                     <h5 class="title"><?php echo $session_user['first_name'].' '.$session_user['last_name']; ?></h5>
                   </a>
                   <p class="description">
-                    michael24
+				  <?php echo $session_user['email'];?>
                   </p>
                 </div>
                 <p class="description text-center">
@@ -279,22 +238,22 @@
           </div>
         </div>
       </div>
-      <footer class="footer">
+	  <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="#">
+                  AXIA
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="#">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="#">
                   Blog
                 </a>
               </li>
@@ -304,9 +263,8 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed By
+            <a  target="_blank">AXIA PVT LTD</a>.
           </div>
         </div>
       </footer>

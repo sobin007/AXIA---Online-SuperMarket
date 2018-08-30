@@ -133,4 +133,19 @@ class Auth_model extends CI_Model
         return $query; 
     }
 
+    public function customerprofile($data) {
+        $notif = array();
+        $this->db->insert('customer', $data);
+        $users_id = $this->db->insert_id();
+        if ($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+            $notif['user_id'] = $users_id;
+        } else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
 }
