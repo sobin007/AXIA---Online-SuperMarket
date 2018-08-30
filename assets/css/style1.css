@@ -1,7 +1,10 @@
 html, 
-/* Profile container */
+.body {
+  background: #d8dbdf !important;
+  padding: 5px 0;
+}
 .profile {
-  margin: 0px 0;
+  margin: 20px 0;
 }
 
 /* Profile sidebar */
@@ -96,7 +99,7 @@ html,
 
 /* Profile Content */
 .profile-content {
-  padding: 20px;
+  padding: 10px;
   background: #fff;
   min-height: 460px;
 }
