@@ -7,12 +7,6 @@ class Account extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
-        // Utils::no_cache();
-        // if ($this->session->userdata('logged_in')) {
-        //     redirect(base_url('dashboard'));
-        //     exit;
-        // }
         $this->session_user = $this->session->userdata('logged_in');
     }
 
