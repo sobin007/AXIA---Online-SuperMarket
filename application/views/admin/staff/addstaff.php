@@ -18,6 +18,33 @@
   <link href="../assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    function notification(message, type)
+    {
+
+        $.notify({
+            icon: "now-ui-icons ui-1_bell-53",
+            message: message
+
+            }, {
+            type: type,
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }
+  </script>
 </head>
 
 <body class="">
@@ -169,11 +196,13 @@
               <div class="card-body">
                 <form method="post" action="addstaff" class="form-horizontal" role="form">
                 <?php if(!empty(@$notif)){ ?>
-                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>">
+                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
                         <p><?php echo @$notif['message'];?></p>
                         <span></span>
                     </div>
-                    <?php } ?>
+                    <?php } 
+                        echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
+                    ?>
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
@@ -296,11 +325,6 @@
       </footer>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
@@ -311,6 +335,24 @@
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script>
+    function notification(message, type)
+    {
+
+        $.notify({
+            icon: "now-ui-icons ui-1_bell-53",
+            message: message
+
+            }, {
+            type: type,
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }
+  </script>
 </body>
 
 </html>
