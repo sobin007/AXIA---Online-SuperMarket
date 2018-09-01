@@ -73,6 +73,6 @@ class Staff extends CI_Controller {
                 $data['notif'] = $this->auth_model->addstaff_to_staff($data);
             }
         }
-        $this->load->view('admin/staff',$data);
+        $this->load->view('admin/staff/addstaff',$data);
     }
 }

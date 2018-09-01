@@ -158,56 +158,7 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-      </div>
-      <div class="content">
-        <div class="row">
-        <div class="col-lg-12">
-            <div class="card card-chart">
-              <div class="card-header">
-              <h5 class="card-category">Global Sales</h5>
-                <h4 class="card-title"> Employees Stats</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="<?php echo site_url('Staff/addstaff');?>">Add Staff</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Phone</th>
-                      <th>Designation</th>
-                      <th>Salary</th>
-                    </thead>
-                    <tbody>
-                    <?php  
-                     foreach ($staff->result() as $row)  
-                      {  
-                      ?><tr>  
-                      <td><?php echo $row->first_name;?></td>  
-                      <td><?php echo $row->address;?></td>
-                      <td><?php echo $row->phone;?></td>
-                      <td><?php echo $row->designation;?></td>
-                      <td><?php echo $row->salary;?></td>  
-                      </tr>
-                    <?php }  
-                      ?> 
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>   
       <div class="content">
         <div class="row">
           <div class="col-md-12">
