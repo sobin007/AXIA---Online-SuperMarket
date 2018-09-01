@@ -20,6 +20,7 @@ class Staff extends CI_Controller {
         }
         $this->load->view('admin/staff');
     }
+
     public function staff() {
 
         $data['title'] = 'Add Staff';
@@ -46,13 +47,14 @@ class Staff extends CI_Controller {
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
-           // $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
+            //$this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
             
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric|is_unique[staff.phone]');
             $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
             $this->form_validation->set_rules('salary', 'Salary', 'trim|required');
             $this->form_validation->set_rules('dob', 'Date of Birth', 'trim|required');
+            $this->form_validation->set_rules('gender', 'Gender', 'trim|required');
             
             if ($this->form_validation->run() == false) {
                 $data['notif']['message'] = validation_errors();
@@ -74,5 +76,25 @@ class Staff extends CI_Controller {
             }
         }
         $this->load->view('admin/staff/addstaff',$data);
+    }
+
+    public function deleteStaff($id) {
+        $this->load->model('Admin_model');
+        $this->Admin_model->deleteStaff($id);
+        redirect(base_url('staff/staff'));
+        exit;
+    }
+
+    public function editStaff($id) {
+
+        $data['title'] = 'Edit Staff';
+        $this->load->model('Admin_model');
+        if ($this->session->userdata('logged_in')) {
+            $data['session_user'] = $this->session_user;
+        }
+
+        $data['staff'] =$this->Admin_model->getStaffOne($id);
+
+        $this->load->view('admin/staff/editstaff',$data);
     }
 }

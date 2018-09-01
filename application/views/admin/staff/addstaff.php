@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url();?>assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="<?= base_url();?>assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     AXIA ADMIN
@@ -14,19 +14,19 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?= base_url();?>assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="<?= base_url();?>assets/demo/demo.css" rel="stylesheet" />
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
   <script>
     function notification(message, type)
     {
@@ -233,7 +233,7 @@
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Confirm Password</label>
-                        <input type="text" name="confirm_password" class="form-control" placeholder="Confirm password" value="<?php echo $this->input->post('confirm_password');?>" >
+                        <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" value="<?php echo $this->input->post('confirm_password');?>">
                       </div>
                     </div>
                   </div>
@@ -274,14 +274,14 @@
                   <div class="row">
                     <div class="col-md-4 pr-1">
                       </div class="form-group" >
-                      <label>Gender</label>
-                      <input type="radio" name="gender" checked="checked" placeholder="male" value="<?php echo $this->input->post('gender');?>"> Male
-                      <input type="radio" name="gender" placeholder="female" value="<?php echo $this->input->post('gender');?>"> Female
+                        <label>Gender</label>
+                        <input type="radio" name="gender" checked="checked"  value="Male">Male
+                        <input type="radio" name="gender"  value="Female">Female
                       </div>
-                      </div>
+                    </div>
                       <div class="col-md-4 px-1">
                       <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc" value="Add Staff">
+                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Add Staff">
                       <div>
                       </div>
                     </div>
@@ -328,13 +328,13 @@
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
+  <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="<?= base_url();?>assets/demo/demo.js"></script>
   <script>
     function notification(message, type)
     {

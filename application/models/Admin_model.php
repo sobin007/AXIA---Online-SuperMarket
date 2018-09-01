@@ -90,4 +90,34 @@ class Admin_model extends CI_Model
         return $notif;
     }
 
+    public function deleteStaff($staff_id) {
+        $this->db->where('staff_id', $staff_id);
+        $this->db->delete('staff');
+        if($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        }else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
+    public function getStaffOne($staff_id) {
+        $staffedit = array();
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->where('staff_id',$staff_id);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            $row = $query->row();
+            $staffedit['address'] = $row->address;
+            $staffedit['phone'] = $row->phone;
+            $staffedit['designation'] = $row->designation;
+            $staffedit['salary'] = $row->salary;
+        }
+        return $staffedit; 
+
+    }
+
 }
