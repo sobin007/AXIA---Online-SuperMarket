@@ -34,6 +34,7 @@ class Staff extends CI_Controller {
     }
 
     public function addstaff() {
+
         $data['title'] = 'Add Staff';
         $this->load->model('auth_model');
     
@@ -45,7 +46,7 @@ class Staff extends CI_Controller {
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
-            $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
+           // $this->form_validation->set_rules('confirm_password', 'Password', 'trim|required|matches[password]|min_length[6]|alpha_numeric|callback_password_check');
             
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric|is_unique[staff.phone]');
@@ -63,7 +64,6 @@ class Staff extends CI_Controller {
                 $data = array(
                     'phone' => $this->input->post('phone'),
                     'address' => $this->input->post('address'),
-                    'gender' => $this->input->post('gender'),
                     'designation' => $this->input->post('designation'),
                     'salary' => $this->input->post('salary'),
                     'dob' => $this->input->post('dob'),

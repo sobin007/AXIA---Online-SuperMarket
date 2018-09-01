@@ -23,9 +23,6 @@
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="blue">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           
@@ -164,7 +161,7 @@
         <div class="col-lg-12">
             <div class="card card-chart">
               <div class="card-header">
-              <h5 class="card-category">Global Sales</h5>
+              <h5 class="card-category">Staff Details</h5>
                 <h4 class="card-title"> Employees Stats</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
@@ -197,7 +194,9 @@
                       <td><?php echo $row->address;?></td>
                       <td><?php echo $row->phone;?></td>
                       <td><?php echo $row->designation;?></td>
-                      <td><?php echo $row->salary;?></td>  
+                      <td><?php echo $row->salary;?></td> 
+                      <td><a href="<?php echo base_url('#' . $row->staff_id); ?>">EDIT</a></td> 
+                      <td><a href="<?php echo base_url('#' . $row->staff_id); ?>">DELETE</a></td>
                       </tr>
                     <?php }  
                       ?> 
@@ -207,109 +206,6 @@
               </div>
             </div>
           </div>
-        </div>
-      <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Add Staff</h4>
-              </div>
-              <div class="card-body">
-                <form method="post" action="addstaff" class="form-horizontal" role="form">
-                <?php if(!empty(@$notif)){ ?>
-                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>">
-                        <p><?php echo @$notif['message'];?></p>
-                        <span></span>
-                    </div>
-                    <?php } ?>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo $this->input->post('first_name');?>">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $this->input->post('email');?>">
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Password</label>
-                        <input type="text"  name="password" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="text" name="confirm_password" class="form-control" placeholder="Confirm password" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>Mobile Number</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $this->input->post('phone');?>" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>Designation</label>
-                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="<?php echo $this->input->post('designation');?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Date of Birth</label>
-                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $this->input->post('dob');?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Salary</label>
-                        <input type="number" name="salary" class="form-control" placeholder="Salary" value="<?php echo $this->input->post('salary');?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      </div class="form-group" >
-                      <label>Gender</label>
-                      <input type="radio" name="gender" checked="checked" value="male"> Male
-                      <input type="radio" name="gender" value="female"> Female
-                      </div>
-                      </div>
-                      <div class="col-md-4 px-1">
-                      <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc" value="Add Staff">
-                      <div>
-                      </div>
-                    </div>
-                  </div>
-                 
-                </form>
-              </div>
-            </div>
           </div>
         </div>
       <footer class="footer">

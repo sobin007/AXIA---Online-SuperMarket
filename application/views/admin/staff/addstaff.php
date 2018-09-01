@@ -198,13 +198,13 @@
                     <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="text"  name="password" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
+                        <input type="password"  name="password" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Confirm Password</label>
-                        <input type="text" name="confirm_password" class="form-control" placeholder="Confirm password" >
+                        <input type="text" name="confirm_password" class="form-control" placeholder="Confirm password" value="<?php echo $this->input->post('confirm_password');?>" >
                       </div>
                     </div>
                   </div>
@@ -246,8 +246,8 @@
                     <div class="col-md-4 pr-1">
                       </div class="form-group" >
                       <label>Gender</label>
-                      <input type="radio" name="gender" checked="checked" value="male"> Male
-                      <input type="radio" name="gender" value="female"> Female
+                      <input type="radio" name="gender" checked="checked" placeholder="male" value="<?php echo $this->input->post('gender');?>"> Male
+                      <input type="radio" name="gender" placeholder="female" value="<?php echo $this->input->post('gender');?>"> Female
                       </div>
                       </div>
                       <div class="col-md-4 px-1">
