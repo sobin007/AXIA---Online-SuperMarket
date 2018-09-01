@@ -173,7 +173,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Add Staff</h4>
+                <h4 class="card-title">Edit Staff Details</h4>
               </div>
               <div class="card-body">
                 <form method="post" action="addstaff" class="form-horizontal" role="form">
@@ -192,7 +192,10 @@
                         <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo @$staff['address'];?>" >
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    
+                  </div>
+                  <div class="row">
+                  <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>Mobile Number</label>
                         <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo @$staff['phone'];?>" >
@@ -230,22 +233,22 @@
             </div>
           </div>
         </div>
-      <footer class="footer">
+        <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="#">
+                  AXIA
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="#">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="#">
                   Blog
                 </a>
               </li>
@@ -255,9 +258,8 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed By
+            <a  target="_blank">AXIA PVT LTD</a>.
           </div>
         </div>
       </footer>

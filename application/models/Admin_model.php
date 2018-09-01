@@ -37,6 +37,7 @@ class Admin_model extends CI_Model
             $notif['message'] = 'Saved successfully';
             $notif['type'] = 'success';
             $notif['user_id'] = $users_id;
+            unset($_POST);
         } else {
             $notif['message'] = 'Something wrong !';
             $notif['type'] = 'danger';
@@ -46,7 +47,6 @@ class Admin_model extends CI_Model
 
     public function getstaff() {
         $notif = array();
-    
         $this->db->select('*');
         $this->db->from('staff');
         $this->db->join('users', 'users.users_id = staff.user_id'); 
@@ -117,7 +117,20 @@ class Admin_model extends CI_Model
             $staffedit['salary'] = $row->salary;
         }
         return $staffedit; 
+    }
 
+    public function edit_staff_details($data, $id) {
+        $address = $this->input->post('address');
+        $phone = $this->input->post('phone');
+        $staff_id = $id;
+        $designation = $this->input->post('designation');
+        $salary = $this->input->post('salary');
+        $this->db->where('staff_id', $staff_id);
+        $this->db->update('staff', 
+        array('address' => $address, 
+                'phone' => $phone, 
+                'designation'=> $designation,
+                'salary' => $salary));
     }
 
 }

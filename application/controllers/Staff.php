@@ -24,12 +24,12 @@ class Staff extends CI_Controller {
     public function staff() {
 
         $data['title'] = 'Add Staff';
-        $this->load->model('auth_model');
+        $this->load->model('Admin_model');
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
 
-        $data['staff'] =$this->auth_model->getstaff();
+        $data['staff'] =$this->Admin_model->getstaff();
 
         $this->load->view('admin/staff',$data);
     }
@@ -37,7 +37,7 @@ class Staff extends CI_Controller {
     public function addstaff() {
 
         $data['title'] = 'Add Staff';
-        $this->load->model('auth_model');
+        $this->load->model('Admin_model');
     
         if (count($_POST)) {
             $this->load->helper('security');
@@ -61,7 +61,7 @@ class Staff extends CI_Controller {
                 $data['notif']['type'] = 'danger';
             } 
             else {
-                $data['notif'] = $this->auth_model->addstaff_to_users();
+                $data['notif'] = $this->Admin_model->addstaff_to_users();
                 $user_id = $data['notif']['user_id'];
                 $data = array(
                     'phone' => $this->input->post('phone'),
@@ -72,7 +72,7 @@ class Staff extends CI_Controller {
                     'gender' =>$this->input->post('gender'),
                     'user_id' =>$user_id
                 );
-                $data['notif'] = $this->auth_model->addstaff_to_staff($data);
+                $data['notif'] = $this->Admin_model->addstaff_to_staff($data);
             }
         }
         $this->load->view('admin/staff/addstaff',$data);
@@ -91,6 +91,30 @@ class Staff extends CI_Controller {
         $this->load->model('Admin_model');
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
+        }
+        if (count($_POST)) {
+            $this->load->helper('security');
+
+            $this->form_validation->set_rules('address', 'Address', 'trim|required');
+            $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric');
+            $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
+            $this->form_validation->set_rules('salary', 'Salary', 'trim|required');
+            
+            if ($this->form_validation->run() == false) {
+                $data['notif']['message'] = validation_errors();
+                $data['notif']['type'] = 'danger';
+            } 
+            else {
+                $data = array(
+                    'table_name' => 'staff',
+                    'address' => $this->input->post('address'),
+                    'phone' => $this->input->post('phone'),
+                    'staff_id' => $id,
+                    'designation' => $this->input->post('designation'),
+                    'salary' => $this->input->post('salary')
+                );
+                $data['notif'] = $this->Admin_model->edit_staff_details($data,$id);
+            }
         }
 
         $data['staff'] =$this->Admin_model->getStaffOne($id);

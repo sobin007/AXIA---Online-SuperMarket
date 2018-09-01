@@ -292,22 +292,22 @@
             </div>
           </div>
         </div>
-      <footer class="footer">
+        <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
+                <a href="#">
+                  AXIA
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="#">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="#">
                   Blog
                 </a>
               </li>
@@ -317,9 +317,8 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed By
+            <a  target="_blank">AXIA PVT LTD</a>.
           </div>
         </div>
       </footer>
@@ -335,24 +334,6 @@
   <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?= base_url();?>assets/demo/demo.js"></script>
-  <script>
-    function notification(message, type)
-    {
-
-        $.notify({
-            icon: "now-ui-icons ui-1_bell-53",
-            message: message
-
-            }, {
-            type: type,
-            timer: 4000,
-            placement: {
-                from: 'top',
-                align: 'right'
-            }
-        });
-    }
-  </script>
 </body>
 
 </html>
