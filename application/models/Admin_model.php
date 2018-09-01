@@ -70,8 +70,20 @@ class Admin_model extends CI_Model
         if ($this->db->affected_rows() > 0) {
             $notif['message'] = 'Saved successfully';
             $notif['type'] = 'success';
-            $notif['user_id'] = $users_id;
         } else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
+    public function delete($cat_id) {
+        $this->db->where('cat_id', $cat_id);
+        $this->db->delete('category');
+        if($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        }else {
             $notif['message'] = 'Something wrong !';
             $notif['type'] = 'danger';
         }

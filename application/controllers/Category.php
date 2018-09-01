@@ -41,5 +41,12 @@ class Category extends CI_Controller {
         $data['category'] = $this->Admin_model->getAllCategory();
         $this->load->view('admin/category',$data);
     }
+
+    public function deleteCategory($id) {
+        $this->load->model('Admin_model');
+        $this->Admin_model->delete($id);
+        redirect(base_url('category/category'));
+        exit;
+    }
     
 }
