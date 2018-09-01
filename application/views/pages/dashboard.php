@@ -233,7 +233,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
 											<div class="agile_top_brand_left_grid_pos">
-												<img src="/assets/images/offer.png" alt=" " class="img-responsive" />
+												<img src="<?= base_url();?>assets/images/offer.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="agile_top_brand_left_grid1">
 												<figure>

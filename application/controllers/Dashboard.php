@@ -19,13 +19,13 @@ class Dashboard extends CI_Controller {
         
         if (!$this->session->userdata('logged_in')) {
 
-            $this->load->view('dashboard');
+            $this->load->view('pages/dashboard');
 
         }else {
             $data['session_user'] = $this->session_user;
 
             if($user['role'] == 8) {
-                redirect(base_url('account/admin'));
+                redirect(base_url('admin/home'));
                 exit;
             }else{
                 $this->load->view('templates/homeheader', $data);

@@ -37,19 +37,19 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="<?php echo site_url('Admin/home')?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li >
-            <a href="<?php echo site_url('account/staff');?>">
+            <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Staff</p>
             </a>
           </li>
           <li>
-            <a href="<?php echo site_url('category/category');?>">
+            <a href="<?php echo site_url('Category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>
             </a>

@@ -37,13 +37,13 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li >
-            <a href="<?php echo site_url('account/admin');?>">
+            <a href="<?php echo site_url('Admin/home');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li >
-            <a href="<?php echo site_url('account/staff');?>">
+            <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Staff</p>
             </a>
