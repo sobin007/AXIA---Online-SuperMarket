@@ -176,7 +176,7 @@
                 <h4 class="card-title">Edit Staff Details</h4>
               </div>
               <div class="card-body">
-                <form method="post" action="addstaff" class="form-horizontal" role="form">
+                <form method="post" action="" class="form-horizontal" role="form">
                 <?php if(!empty(@$notif)){ ?>
                     <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
                         <p><?php echo @$notif['message'];?></p>

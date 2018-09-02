@@ -119,18 +119,14 @@ class Admin_model extends CI_Model
         return $staffedit; 
     }
 
-    public function edit_staff_details($data, $id) {
-        $address = $this->input->post('address');
-        $phone = $this->input->post('phone');
-        $staff_id = $id;
-        $designation = $this->input->post('designation');
-        $salary = $this->input->post('salary');
+    public function edit_staff_details($data, $staff_id) {
+        // $address = $this->input->post('address');
+        // $phone = $this->input->post('phone');
+        // $staff_id = $id;
+        // $designation = $this->input->post('designation');
+        // $salary = $this->input->post('salary');
         $this->db->where('staff_id', $staff_id);
-        $this->db->update('staff', 
-        array('address' => $address, 
-                'phone' => $phone, 
-                'designation'=> $designation,
-                'salary' => $salary));
+        $this->db->update('staff',$data);
     }
 
 }

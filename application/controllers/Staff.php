@@ -105,20 +105,17 @@ class Staff extends CI_Controller {
                 $data['notif']['type'] = 'danger';
             } 
             else {
-                $data = array(
-                    'table_name' => 'staff',
+                $staffedit = array(
                     'address' => $this->input->post('address'),
                     'phone' => $this->input->post('phone'),
-                    'staff_id' => $id,
                     'designation' => $this->input->post('designation'),
                     'salary' => $this->input->post('salary')
                 );
-                $data['notif'] = $this->Admin_model->edit_staff_details($data,$id);
+                $data['notif'] = $this->Admin_model->edit_staff_details($staffedit,$id);
             }
         }
 
         $data['staff'] =$this->Admin_model->getStaffOne($id);
-
         $this->load->view('admin/staff/editstaff',$data);
     }
 }
