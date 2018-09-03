@@ -120,13 +120,54 @@ class Admin_model extends CI_Model
     }
 
     public function edit_staff_details($data, $staff_id) {
-        // $address = $this->input->post('address');
-        // $phone = $this->input->post('phone');
-        // $staff_id = $id;
-        // $designation = $this->input->post('designation');
-        // $salary = $this->input->post('salary');
         $this->db->where('staff_id', $staff_id);
         $this->db->update('staff',$data);
+    }
+
+
+    public function addsubcategory($data) {
+        $notif = array();
+        $this->db->insert('subcategory', $data);
+        $users_id = $this->db->insert_id();
+        if ($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        } else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
+    public function getAllSubCategory() {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('subcategory');
+        $query = $this->db->get();
+        return $query; 
+
+    }
+
+    public function viewsubcategory($cat_id) {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('subcategory');
+        $this->db->where('cat_id', $cat_id); 
+        $query = $this->db->get();
+        return $query; 
+    }
+
+    public function deleteSubCategory($subcat_id) {
+        $this->db->where('subcat_id', $subcat_id);
+        $this->db->delete('subcategory');
+        if($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        }else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
     }
 
 }

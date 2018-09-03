@@ -118,4 +118,5 @@ class Staff extends CI_Controller {
         $data['staff'] =$this->Admin_model->getStaffOne($id);
         $this->load->view('admin/staff/editstaff',$data);
     }
+
 }

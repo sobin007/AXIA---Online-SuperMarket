@@ -133,5 +133,4 @@ class Account extends CI_Controller {
         $this->output->set_header("Pragma: no-cache");
         redirect(base_url('/'));
     }
-
 }

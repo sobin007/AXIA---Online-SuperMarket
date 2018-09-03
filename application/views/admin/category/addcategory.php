@@ -161,31 +161,6 @@
       </div>
       <div class="content">
         <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-category">All Category List</h5>
-                <h4 class="card-title"> Category</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <tbody>
-                    <?php  
-                     foreach ($category->result() as $row)  
-                      {  
-                      ?><tr>  
-                      <td><?php echo $row->cat_name;?></td>
-                      <td><a href="<?php echo base_url('category/deleteCategory/' . $row->cat_id); ?>">DELETE</a></td>   
-                      </tr>
-                    <?php }  
-                      ?> 
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
@@ -211,95 +186,7 @@
                   <div class="row">
                       <div class="col-md-4 px-1">
                       <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Top : 20px; margin-Left :20px" value="Add Staff">
-                      <div>
-                      </div>
-                  </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-category">All Subcategory List</h5>
-                <h4 class="card-title"> Subcategory</h4>
-              </div>
-              <div class="card-body">
-              <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>Category</label>
-                        <select id="cat_id" class="form-control" name="cat_id">
-                        <option value="">Select Category</option>
-                        <?php
-                        foreach($category->result() as $row){
-                          echo '<option value="' . $row->cat_id . '">' . $row->cat_name . '</option>';
-                        }
-                        ?>
-                      </select>
-                      </div>
-                    </div>
-                <div class="table-responsive">
-                  <table class="table">
-                    <tbody>
-                    <?php  
-                     foreach ($subcategory->result() as $row)  
-                      {  
-                      ?><tr>  
-                      <td><?php echo $row->subcat_name;?></td>
-                      <td><a href="<?php echo base_url('category/deleteCategory/' . $row->subcat_id); ?>">DELETE</a></td>   
-                      </tr>
-                    <?php }  
-                      ?> 
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-category">Add Sub Category Here</h5>
-                <h4 class="card-title">Add Sub Category</h4>
-              </div>
-              <div class="card-body">
-                <form method="post" action="addsubcategory" class="form-horizontal" role="form">
-                <?php if(!empty(@$notif)){ ?>
-                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>">
-                        <p><?php echo @$notif['message'];?></p>
-                        <span></span>
-                    </div>
-                    <?php } ?>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>Category</label>
-                        <select id="cat_id" class="form-control" name="cat_id">
-                        <option value="">Select Category</option>
-                        <?php
-                        foreach($category->result() as $row){
-                          echo '<option value="' . $row->cat_id . '">' . $row->cat_name . '</option>';
-                        }
-                        ?>
-                      </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>Sub Category Name</label>
-                        <input type="text" name= "subcat_name" class="form-control" placeholder="SubCategory Name" value="<?php echo $this->input->post('subcat_name');?>">
-                      </div>
-                    </div>
-                    </div>
-                  <div class="row">
-                      <div class="col-md-4 px-1">
-                      <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Top : 20px; margin-Left :20px" value="Add Staff">
+                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Top : 20px; margin-Left :20px" value="Add Category">
                       <div>
                       </div>
                   </div>
