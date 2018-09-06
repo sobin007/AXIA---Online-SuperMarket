@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 05, 2018 at 02:23 PM
+-- Generation Time: Sep 06, 2018 at 05:58 PM
 -- Server version: 5.5.54-0+deb8u1
 -- PHP Version: 5.6.30-0+deb8u1
 
@@ -50,23 +50,41 @@ INSERT INTO `category` (`cat_id`, `cat_name`, `cat_status`, `cat_created_At`) VA
 
 CREATE TABLE IF NOT EXISTS `customer` (
 `customer_id` int(11) NOT NULL,
+  `cus_first_name` varchar(30) NOT NULL,
+  `cus_last_name` varchar(30) NOT NULL,
   `cus_phone` varchar(30) NOT NULL,
   `cus_address` varchar(200) NOT NULL,
+  `cus_gender` int(11) NOT NULL DEFAULT '1',
+  `cus_dob` date NOT NULL,
   `users_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`customer_id`, `cus_phone`, `cus_address`, `users_id`) VALUES
-(1, '9633845820', 'pullumattathil,vadakkemala', 1),
-(2, '9633845821', 'sdfghsadfgsdfghsdfg', 1),
-(3, '9633845825', 'sdfghsadfgsdfghsdfg', 1),
-(4, '9633845826', 'sdfghsadfgsdfghsdfg', 1),
-(5, '9933845820', 'reagdfhgjkl', 1),
-(6, '9933845828', 'reagdfhgjkl', 1),
-(7, '5478965214', 'dafsgasfdghfh', 1);
+INSERT INTO `customer` (`customer_id`, `cus_first_name`, `cus_last_name`, `cus_phone`, `cus_address`, `cus_gender`, `cus_dob`, `users_id`) VALUES
+(8, 'Sobin', 'Mathew', '9633845820', 'pullumattathil vadakkemala', 1, '2018-09-09', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+`product_id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `short_disc` varchar(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `cat_id` int(11) NOT NULL DEFAULT '0',
+  `subcat_id` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `save_price` int(11) NOT NULL DEFAULT '0',
+  `quatity` int(11) NOT NULL DEFAULT '0',
+  `product_img` varchar(100) NOT NULL,
+  `created_At` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -76,6 +94,8 @@ INSERT INTO `customer` (`customer_id`, `cus_phone`, `cus_address`, `users_id`) V
 
 CREATE TABLE IF NOT EXISTS `staff` (
 `staff_id` int(11) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `address` varchar(200) NOT NULL,
   `gender` varchar(20) NOT NULL,
@@ -84,17 +104,15 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `salary` varchar(20) NOT NULL,
   `pic` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staff_id`, `phone`, `address`, `gender`, `dob`, `designation`, `salary`, `pic`, `user_id`) VALUES
-(1, '9633845820', 'pullumattathil', '', '2005-06-15', 'Manager', '50000', '', 3),
-(2, '9633845820', 'pullumattathil', '', '2005-06-15', 'Manager', '50000', '', 4),
-(3, '9633845820', 'pullumattathil', 'male', '2005-06-15', 'Manager', '50000', '', 5),
-(5, '3456789012', 'kottayam mundakkayam', 'Female', '2018-09-13', 'Casher', '14000', '', 8);
+INSERT INTO `staff` (`staff_id`, `first_name`, `last_name`, `phone`, `address`, `gender`, `dob`, `designation`, `salary`, `pic`, `user_id`) VALUES
+(6, 'Steffy', 'Mathew', '9896754532', 'Kanjirappally,koovappally', '2', '2018-09-11', 'Manager', '25500', '', 12),
+(7, 'Dona', 'Mathew', '7856254185', 'Yendayar,Kottayam', '2', '2018-09-19', 'Manager', '56300', '', 13);
 
 -- --------------------------------------------------------
 
@@ -125,29 +143,25 @@ INSERT INTO `subcategory` (`subcat_id`, `subcat_name`, `cat_id`, `status`) VALUE
 
 CREATE TABLE IF NOT EXISTS `users` (
 `users_id` int(11) NOT NULL,
+  `uname` varchar(30) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `is_active` int(11) NOT NULL,
-  `first_name` varchar(200) NOT NULL,
-  `last_name` varchar(200) NOT NULL,
   `role` int(11) NOT NULL,
   `last_login` date NOT NULL,
   `createdAt` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`users_id`, `email`, `password`, `is_active`, `first_name`, `last_name`, `role`, `last_login`, `createdAt`) VALUES
-(1, 'sobinmathew988@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 1, 'Sobin', 'Mathew', 1, '2018-08-31', '2018-08-27'),
-(2, 'admin@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 1, 'Admin', 'Admin', 8, '2018-09-03', '2018-08-27'),
-(3, 'stany@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 0, 'Sobin', 'Mathew', 7, '0000-00-00', '2018-08-27'),
-(4, 'stany123@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 0, 'Sobin', 'Mathew', 7, '0000-00-00', '2018-08-27'),
-(5, 'stany12@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 0, 'Sobin', 'Mathew', 7, '0000-00-00', '2018-08-27'),
-(6, 'monisha@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 0, 'asdfg', 'asdfg', 7, '0000-00-00', '2018-09-01'),
-(7, 'sabu@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 1, 'Sabu', 'Johna', 1, '0000-00-00', '2018-09-01'),
-(8, 'ashikshaji4u@gmail.com', 'd53dbc14e39abb5a63bc2f2428070cfc989ece48', 0, 'sdrtfgg', 'wert', 7, '0000-00-00', '2018-09-01');
+INSERT INTO `users` (`users_id`, `uname`, `email`, `password`, `is_active`, `role`, `last_login`, `createdAt`) VALUES
+(9, 'sobin', 'sobinmathew988@gmail.com', 'c62150305300b6f1df76a04d8d335361e667f74d', 1, 1, '2018-09-06', '2018-09-06'),
+(10, 'Admin', 'admin@gmail.com', 'c62150305300b6f1df76a04d8d335361e667f74d', 1, 8, '2018-09-06', '2018-09-06'),
+(11, 'artist', 'artist@gmail.com', 'c62150305300b6f1df76a04d8d335361e667f74d', 1, 1, '2018-09-06', '2018-09-06'),
+(12, 'Steffy', 'steffymathew988@gmail.com', 'c62150305300b6f1df76a04d8d335361e667f74d', 1, 7, '0000-00-00', '2018-09-06'),
+(13, 'dona', 'donamathew988@gmail.com', 'c62150305300b6f1df76a04d8d335361e667f74d', 1, 7, '0000-00-00', '2018-09-06');
 
 --
 -- Indexes for dumped tables
@@ -164,6 +178,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `customer`
  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+ ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `staff`
@@ -196,12 +216,17 @@ MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `subcategory`
 --
@@ -211,7 +236,7 @@ MODIFY `subcat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

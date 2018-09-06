@@ -194,7 +194,7 @@
                      foreach ($customer->result() as $row)  
                       {  
                       ?><tr>  
-                      <td><?php echo $row->first_name;?></td>  
+                      <td><?php echo $row->cus_first_name;?></td>  
                       <td><?php echo $row->cus_address;?></td>
                       <td><?php echo $row->cus_phone;?></td>
                       <td><a href="<?php echo base_url('staff/editStaff/' . $row->customer_id); ?>">EDIT</a></td> 
