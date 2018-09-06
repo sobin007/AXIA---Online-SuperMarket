@@ -49,6 +49,12 @@
             </a>
           </li>
           <li >
+            <a href="<?php echo site_url('User/customer');?>">
+              <i class="now-ui-icons design_app"></i>
+              <p>Customer</p>
+            </a>
+          </li>
+          <li >
             <a href="<?php echo site_url('category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>

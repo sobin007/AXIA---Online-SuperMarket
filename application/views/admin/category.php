@@ -47,6 +47,12 @@
               <p>Staff</p>
             </a>
           </li>
+          <li >
+            <a href="<?php echo site_url('User/customer');?>">
+              <i class="now-ui-icons design_app"></i>
+              <p>Customer</p>
+            </a>
+          </li>
           <li class="active" >
             <a href="<?php echo site_url('Category/category');?>">
               <i class="now-ui-icons education_atom"></i>

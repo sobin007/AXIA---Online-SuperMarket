@@ -170,4 +170,15 @@ class Admin_model extends CI_Model
         return $notif;
     }
 
+    /* Customer models for admin */
+
+    public function getCustomer() {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->join('users', 'users.users_id = customer.users_id'); 
+        $query = $this->db->get();
+        return $query; 
+    }
+
 }
