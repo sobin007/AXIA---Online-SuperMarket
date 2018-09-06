@@ -191,7 +191,8 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Add Staff</h4>
+              <h5 class="card-category">Add Staff Here</h5>
+                <h4 class="card-title">Add Your Staff</h4>
               </div>
               <div class="card-body">
                 <form method="post" action="addstaff" class="form-horizontal" role="form">
@@ -204,13 +205,19 @@
                         echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
                     ?>
                   <div class="row">
-                    <div class="col-md-6 pr-1">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" name= "uname" class="form-control" placeholder="User Name" value="<?php echo $this->input->post('uname');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>First Name</label>
                         <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo $this->input->post('first_name');?>">
                       </div>
                     </div>
-                    <div class="col-md-6 pl-1">
+                    <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Last Name</label>
                         <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
@@ -273,20 +280,23 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4 pr-1">
-                      </div class="form-group" >
-                        <label>Gender</label>
-                        <input type="radio" name="gender" checked="checked"  value="Male">Male
-                        <input type="radio" name="gender"  value="Female">Female
-                      </div>
-                    </div>
-                      <div class="col-md-4 px-1">
                       <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Add Staff">
-                      <div>
+                        <label>Gender</label>
+                        <select id="gender" class="form-control" name="gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
                       </div>
                     </div>
                   </div>
-                 
+                  <div class="row">
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Add Staff">
+                      <div>
+                    </div>
+                    </div>
+                  </div>
                 </form>
               </div>
             </div>

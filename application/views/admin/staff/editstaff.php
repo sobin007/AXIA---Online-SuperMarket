@@ -178,30 +178,43 @@
               <div class="card-body">
                 <form method="post" action="" class="form-horizontal" role="form">
                 <?php if(!empty(@$notif)){ ?>
-                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
-                        <p><?php echo @$notif['message'];?></p>
-                        <span></span>
+                  <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
+                    <p><?php echo @$notif['message'];?></p>
+                    <span></span>
+                  </div>
+                <?php } 
+                  echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
+                ?>
+                <div class="row">
+                  
+                    <div class="col-md-6 px\r-1">
+                      <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo @$staff['first_name'];?>">
+                      </div>
                     </div>
-                    <?php } 
-                        echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
-                    ?>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo @$staff['last_name'];?>">
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 pr-1">
                       <div class="form-group">
                         <label>Address</label>
                         <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo @$staff['address'];?>" >
                       </div>
                     </div>
-                    
-                  </div>
-                  <div class="row">
-                  <div class="col-md-4 pr-1">
+                    <div class="col-md-4 pl-1">
                       <div class="form-group">
                         <label>Mobile Number</label>
                         <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo @$staff['phone'];?>" >
                       </div>
                     </div>
                   </div>
+                
                   <div class="row">
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
@@ -217,7 +230,31 @@
                     </div>
                   </div>
                   <div class="row">
-
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $staff['dob'];?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Gender</label>
+                        <?php if(!empty(@$staff)){ ?>
+                              <?php if($staff['gender'] == 1) { ?>
+                                <select id="gender" class="form-control" name="gender">
+                                  <option value="1" selected="selected">Male</option>
+                                  <option value="2">Female</option>
+                                </select>
+                              <?php }else{ ?>
+                                <select id="gender" class="form-control" name="gender">
+                                  <option value="1" >Male</option>
+                                  <option value="2" selected="selected">Female</option>
+                                </select>
+                          <?php }} ?>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                       <div class="col-md-4 px-1">
                       <div class="form-group">
                       <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Save">

@@ -7,13 +7,12 @@ class Admin_model extends CI_Model
         date_default_timezone_set('Asia/Kolkata');
         $date = date('Y-m-d H:i:s');
         $data = array(
-            'first_name' => $this->input->post('first_name'),
-            'last_name' => $this->input->post('last_name'),
+            'uname' => $this->input->post('uname'),
             'email' => $this->input->post('email'),
             'password' => Utils::hash('sha1', $this->input->post('password'), AUTH_SALT),
             'role' => 7,
             'createdAt' => $date,
-            'is_active' => $this->input->post('is_active') ? : 0
+            'is_active' => $this->input->post('is_active') ? : 1
         );
         $this->db->insert('users', $data);
         $users_id = $this->db->insert_id();
@@ -49,7 +48,6 @@ class Admin_model extends CI_Model
         $notif = array();
         $this->db->select('*');
         $this->db->from('staff');
-        $this->db->join('users', 'users.users_id = staff.user_id'); 
         $query = $this->db->get();
         return $query; 
     }
@@ -111,10 +109,14 @@ class Admin_model extends CI_Model
         $query = $this->db->get();
         if ($query->num_rows() == 1) {
             $row = $query->row();
+            $staffedit['first_name'] = $row->first_name;
+            $staffedit['last_name'] = $row->last_name;
             $staffedit['address'] = $row->address;
             $staffedit['phone'] = $row->phone;
             $staffedit['designation'] = $row->designation;
             $staffedit['salary'] = $row->salary;
+            $staffedit['dob'] = $row->dob;
+            $staffedit['gender'] = $row->gender;
         }
         return $staffedit; 
     }

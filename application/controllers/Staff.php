@@ -43,6 +43,7 @@ class Staff extends CI_Controller {
             $this->load->helper('security');
 
             $this->form_validation->set_rules('first_name', 'First name', 'trim|required');
+            $this->form_validation->set_rules('uname', 'User name', 'trim|required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 
@@ -64,6 +65,8 @@ class Staff extends CI_Controller {
                 $data['notif'] = $this->Admin_model->addstaff_to_users();
                 $user_id = $data['notif']['user_id'];
                 $data = array(
+                    'first_name'=> $this->input->post('first_name'),
+                    'last_name'=>$this->input->post('last_name'),
                     'phone' => $this->input->post('phone'),
                     'address' => $this->input->post('address'),
                     'designation' => $this->input->post('designation'),
@@ -95,10 +98,15 @@ class Staff extends CI_Controller {
         if (count($_POST)) {
             $this->load->helper('security');
 
+            $this->form_validation->set_rules('first_name', 'First name', 'trim|required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric');
             $this->form_validation->set_rules('designation', 'Designation', 'trim|required');
             $this->form_validation->set_rules('salary', 'Salary', 'trim|required');
+            $this->form_validation->set_rules('dob', 'Date of Birth', 'trim|required');
+            $this->form_validation->set_rules('gender', 'Gender', 'trim|required');
+            
             
             if ($this->form_validation->run() == false) {
                 $data['notif']['message'] = validation_errors();
@@ -106,10 +114,14 @@ class Staff extends CI_Controller {
             } 
             else {
                 $staffedit = array(
+                    'first_name'=>$this->input->post('first_name'),
+                    'last_name'=>$this->input->post('last_name'),
                     'address' => $this->input->post('address'),
                     'phone' => $this->input->post('phone'),
                     'designation' => $this->input->post('designation'),
-                    'salary' => $this->input->post('salary')
+                    'salary' => $this->input->post('salary'),
+                    'gender'=> $this->input->post('gender'),
+                    'dob'=>$this->input->post('dob')
                 );
                 $data['notif'] = $this->Admin_model->edit_staff_details($staffedit,$id);
             }
