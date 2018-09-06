@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <span><?php echo $session_user['first_name'];?></span>
+                        <span><?php echo $session_user['uname'];?></span>
                     </a>
                     <ul class="dropdown-menu al">
                         <li>
@@ -77,10 +77,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row">
                                    
                                     <div class="col-lg-8">
-                                        <p class="text-left"><strong><?php echo $session_user['first_name'].' '.$session_user['last_name']; ?></strong></p>
+                                        <p class="text-left"><strong><?php echo $session_user['uname']; ?></strong></p>
                                         <p class="text-left small"><?php echo $session_user['email'];?></p>
-                                    
-                                       
                                     </div>
                                 </div>
                             </div>

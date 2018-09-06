@@ -54,8 +54,7 @@ class Account extends CI_Controller {
         if (count($_POST)) {
             $this->load->helper('security');
 
-            $this->form_validation->set_rules('first_name', 'First name', 'trim|required');
-            $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
+            $this->form_validation->set_rules('uname', 'User Name', 'trim|required|is_unique[users.uname]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 
             $this->form_validation->set_rules('password', 'Password', 'trim|required');
