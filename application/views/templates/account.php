@@ -231,7 +231,6 @@
                                   <option value="2">Female</option>
                                 </select>
                             <?php }?>
-                           
                           </div>  
                         </div>
                       </div>
