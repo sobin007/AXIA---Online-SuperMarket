@@ -14,8 +14,8 @@ class Customer extends CI_Controller {
         $this->load->view('admin/staff');
     }
 
-    public function home () {
-        $data['title'] = 'Staff';
+    public function home() {
+        $data['title'] = 'Customer';
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
@@ -24,21 +24,27 @@ class Customer extends CI_Controller {
 
     public function profile() {
 
-        $data['title'] = 'Profile';
-        if ($this->session->userdata('logged_in')) {
-            $data['session_user'] = $this->session_user;
-        }else{
+        $data['title'] = 'Customer';
+        if (!$this->session->userdata('logged_in')) {
             redirect(base_url('dashboard'));
             exit;
+        }else{
+            $user = $this->session->userdata('logged_in');
+            $user_id = $user['users_id'];
         }
+        
         $this->load->model('auth_model');
     
         if (count($_POST)) {
             $this->load->helper('security');
 
+            $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
             $this->form_validation->set_rules('address', 'Address', 'trim|required');
             $this->form_validation->set_rules('phone', 'Mobile Number', 'trim|required|min_length[10]|numeric|is_unique[customer.cus_phone]');
-            
+            $this->form_validation->set_rules('dob', 'Date of Birth', 'trim|required');
+            $this->form_validation->set_rules('gender', 'Gender', 'trim|required');
+
             if ($this->form_validation->run() == false) {
                 $data['notif']['message'] = validation_errors();
                 $data['notif']['type'] = 'danger';
@@ -47,22 +53,28 @@ class Customer extends CI_Controller {
                 if ($this->session->userdata('logged_in')) {
                     $user = $this->session->userdata('logged_in');
                     $user_id = $user['users_id'];
-                
                     $data = array(
-                    'cus_phone' => $this->input->post('phone'),
-                    'cus_address' => $this->input->post('address'),
-                    'users_id' =>$user_id
+                        'cus_first_name'=> $this->input->post('first_name'),
+                        'cus_last_name'=> $this->input->post('last_name'),
+                        'cus_phone' => $this->input->post('phone'),
+                        'cus_address' => $this->input->post('address'),
+                        'cus_dob'=> $this->input->post('dob'),
+                        'cus_gender'=>$this->input->post('gender'),
+                        'users_id' =>$user_id
                     );
-                    $data['notif'] = $this->auth_model->customerprofile($data);
+                    $data['notif'] = $this->auth_model->addCustomer($data);
                 }
             }
         }
+        $data['customer'] = $this->auth_model->getCustomerOne($user_id);
+        $data['user'] = $user;
         $this->load->view('templates/account',$data);
+    
     }
 
-    public function customerprofile() {
+    public function customerProfile() {
 
-        $data['title'] = 'Profile';
+        $data['title'] = 'CustomerProfile';
        
         $this->load->view('templates/account');
     }

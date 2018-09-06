@@ -78,4 +78,39 @@ class Auth_model extends CI_Model
         }
         return null;
     }
+
+    /* Customer Profile Routes */
+
+    public function addCustomer($data) {
+        $notif = array();
+        $this->db->insert('customer', $data);
+        $users_id = $this->db->insert_id();
+        if ($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        } else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
+    public function getCustomerOne($customer_id) {
+        $customer = array();
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->where('users_id',$customer_id);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            $row = $query->row();
+            //$customer = $row;
+            $customer['first_name'] = $row->cus_first_name;
+            $customer['last_name'] = $row->cus_last_name;
+            $customer['gender'] = $row->cus_gender;
+            $customer['address'] = $row->cus_address;
+            $customer['dob'] = $row->cus_dob;
+            $customer['phone'] = $row->cus_phone;
+        }
+        return $customer; 
+    }
 }

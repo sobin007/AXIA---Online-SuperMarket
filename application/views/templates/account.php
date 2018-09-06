@@ -157,13 +157,13 @@
                         <div class="col-md-6 pr-1">
                           <div class="form-group">
                             <label>User Name</label>
-                            <input type="text" class="form-control" disabled="" placeholder="User Name" value="<?php echo $session_user['uname'];?>">
+                            <input type="text" class="form-control" disabled="" placeholder="User Name" value="<?php echo $user['uname'];?>">
                           </div>
                         </div>
                         <div class="col-md-6 pl-1">
                           <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email"  class="form-control" disabled="" placeholder="Email Address" value="<?php echo $session_user['email']?>">
+                            <input type="email"  class="form-control" disabled="" placeholder="Email Address" value="<?php echo $user['email']?>">
                           </div>
                         </div>
                       </div>
@@ -171,35 +171,80 @@
                     		<div class="col-md-6 pr-1">
                       			<div class="form-group">
                         			<label>First Name</label>
-                        			<input type="text" class="form-control" placeholder="First Name" value="">
+                              <?php if(!empty(@$customer)){ ?>
+                                <input type="text" name="first_name" class="form-control" placeholder="First Name" value="<?php echo $customer['first_name']?>">
+                    	        <?php }else{ ?>
+                        			<input type="text" name="first_name" class="form-control" placeholder="First Name" value="">
+                              <?php }?>
                       			</div>
                     		</div>
                     		<div class="col-md-6 pl-1">
                       			<div class="form-group">
                         			<label>Last Name</label>
-                        			<input type="text" class="form-control" placeholder="Last Name" value="">
+                              <?php if(!empty(@$customer)){ ?>
+                                <input type="text" name="last_name" class="form-control" placeholder="Last Name" value="<?php echo $customer['last_name']?>">
+                    	        <?php }else{ ?>
+                                <input type="text" name="last_name" class="form-control" placeholder="Last Name" value="">
+                              <?php }?>
                       			</div>
                     		</div>
 				  		        </div>
                       <div class="row">
-                        <div class="col-md-5 pr-1">
+                        <div class="col-md-4 pr-1">
                           <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control" disabled="" placeholder="Email" value="<?php echo $session_user['email'];?>">
+                            <label>Date of Birth</label>
+                            <?php if(!empty(@$customer)){ ?>
+                              <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $customer['dob']?>">
+                    	        <?php }else{ ?>
+                                <input type="date" name="dob" class="form-control" placeholder="dob" value="">
+                            <?php }?>
+                          </div>
+                        </div>
+                        <div class="col-md-4 px-1">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Mobile Number</label>
+                            <?php if(!empty(@$customer)){ ?>
+                              <input type="phone" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $customer['phone']?>">
+                    	        <?php }else{ ?>
+                                <input type="phone" name="phone" class="form-control" placeholder="Mobile Number" value="">
+                            <?php }?>
                           </div>
                         </div>
                         <div class="col-md-4 pl-1">
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Mobile Number</label>
-                            <input type="phone" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $this->input->post('phone');?>">
-                          </div>
+                          <label>Gender</label>
+                          <?php if(!empty(@$customer)){ ?>
+                              <?php if($customer['gender'] == 1) { ?>
+                                <select id="gender" class="form-control" name="gender">
+                                  <option value="1" selected="selected">Male</option>
+                                  <option value="2">Female</option>
+                                </select>
+                              <?php }else{ ?>
+                                <select id="gender" class="form-control" name="gender">
+                                  <option value="1" >Male</option>
+                                  <option value="2" selected="selected">Female</option>
+                                </select>
+                              <?php } ?>
+                    	        <?php }else{ ?>
+                                <select id="gender" class="form-control" name="gender">
+                                  <option value="1">Male</option>
+                                  <option value="2">Female</option>
+                                </select>
+                            <?php }?>
+                           
+                          </div>  
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="form-group">
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+                            <?php if(!empty(@$customer)){ ?>
+                              <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $customer['address']?>" >
+                    	        <?php }else{ ?>
+                                <input type="text" name="address" class="form-control" placeholder="Home Address" value="" >
+                            <?php }?>
+                            
                           </div>
                         </div>
                       </div>
@@ -226,11 +271,11 @@
                   <a href="#">
                     <img class="avatar border-gray" src="<?= base_url();?>assets/img/mike.jpg" alt="...">
                     <h5 class="title">
-                      <?php echo $session_user['uname']; ?>
+                      <?php echo $user['uname']; ?>
                     </h5>
                   </a>
                   <p class="description">
-				            <?php echo $session_user['email'];?>
+				            <?php echo $user['email'];?>
                   </p>
                 </div>
                 <p class="description text-center">
