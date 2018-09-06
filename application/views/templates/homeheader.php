@@ -109,7 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row">
                                    
                                     <div class="col-lg-8">
-                                    <p  class="text-left" style="min-width:150px;"><a href="<?php echo site_url('account/profile');?>">My Profile</a></p>
+                                    <p  class="text-left" style="min-width:150px;"><a href="<?php echo site_url('Customer/profile');?>">My Profile</a></p>
     
                                     </div>
                                 </div>
