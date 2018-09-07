@@ -13,15 +13,19 @@ class Product extends CI_Controller {
 
     public function index () {
 
-        $this->load->view('admin/category');
+        $this->load->view('admin/product/product');
     }
     public function product() {
 
-        $data['title'] = 'Category';
+        $data['title'] = 'Product';
+        $this->load->model('Admin_model');
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
         }
-        $this->load->view('admin/category',$data);
+
+        $data['product'] = $this->Admin_model->getAllProduct();
+
+        $this->load->view('admin/product/product',$data);
     }
     
 }

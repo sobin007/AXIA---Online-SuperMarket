@@ -183,4 +183,14 @@ class Admin_model extends CI_Model
         return $query; 
     }
 
+    /* Product models for admin */
+
+    public function getAllProduct() {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('products'); 
+        $query = $this->db->get();
+        return $query; 
+    }
+
 }
