@@ -8,7 +8,6 @@ class Dashboard extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
         $this->session_user = $this->session->userdata('logged_in'); 
     }
 
@@ -17,13 +16,32 @@ class Dashboard extends CI_Controller {
         $data['title'] = 'Dashboard';
         $user = $this->session->userdata('logged_in');
         
-        if (!$this->session->userdata('logged_in')) {
-
+        if (!$user) {
             $this->load->view('pages/dashboard');
-
         }else {
             $data['session_user'] = $this->session_user;
+            if($user['role'] == 8) {
+                redirect(base_url('admin/home'));
+                exit;
+            }else if($user['role'] == 7){
+                redirect(base_url('Employees/home'));
+                exit;
+            }else{
+                $this->load->view('templates/homeheader', $data);
+                $this->load->view('templates/home');
+                $this->load->view('templates/footer');
+            }
+        }
+    }
 
+    public function home() {
+        $data['title'] = 'Dashboard';
+        $user = $this->session->userdata('logged_in');
+        
+        if (!$user) {
+            $this->load->view('pages/dashboard');
+        }else {
+            $data['session_user'] = $this->session_user;
             if($user['role'] == 8) {
                 redirect(base_url('admin/home'));
                 exit;

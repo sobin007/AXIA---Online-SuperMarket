@@ -7,18 +7,39 @@ class Staff extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
+        if($this->session->userdata('logged_in')) {
+            $this->session_user = $this->session->userdata('logged_in');
+            $user = $this->session->userdata('logged_in');
+            echo $user['role'];
+            if(!$user['role'] == 8){
+                redirect(base_url('Dashboard'));
+                exit;  
+            }
+        }else{
+            redirect(base_url('Dashboard'));
+            exit;
+        }
+        
     }
-
     public function index () {
         $this->load->view('admin/staff');
     }
     public function home () {
         $data['title'] = 'Staff';
         if ($this->session->userdata('logged_in')) {
-            $data['session_user'] = $this->session_user;
+            $user = $this->session->userdata('logged_in');
+            if($user['role'] == 8){
+                redirect(base_url('Dashboard'));
+                exit;  
+            }else{
+                $data['session_user'] = $this->session_user;
+                $this->load->view('admin/staff');
+            } 
+        }else{
+            redirect(base_url('Dashboard'));
+            exit; 
         }
-        $this->load->view('admin/staff');
+      
     }
 
     public function staff() {
@@ -26,12 +47,19 @@ class Staff extends CI_Controller {
         $data['title'] = 'Add Staff';
         $this->load->model('Admin_model');
         if ($this->session->userdata('logged_in')) {
-            $data['session_user'] = $this->session_user;
+            $user = $this->session->userdata('logged_in');
+            if(!$user['role'] == 8){
+                redirect(base_url('Dashboard/home'));
+                exit;  
+            }else{
+                $data['staff'] =$this->Admin_model->getstaff();
+                $this->load->view('admin/staff',$data);
+                $data['session_user'] = $this->session_user;
+            } 
+        }else{
+            redirect(base_url('Dashboard'));
+            exit; 
         }
-
-        $data['staff'] =$this->Admin_model->getstaff();
-
-        $this->load->view('admin/staff',$data);
     }
 
     public function addstaff() {

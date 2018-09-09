@@ -7,9 +7,22 @@ class Product extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
-        $this->session_user = $this->session->userdata('logged_in');
+        if(!$this->is_logged_in()){
+            redirect(base_url('Dashboard'));
+            exit;
+        }else{
+            $this->session_user = $this->session->userdata('logged_in');
+        } 
     }
+
+    function is_logged_in() {
+        $user = $this->session->userdata('user_data');
+        if (!isset($user)) { 
+            return false; 
+        } else {
+            return true;
+        }
+    } 
 
     public function index () {
 
