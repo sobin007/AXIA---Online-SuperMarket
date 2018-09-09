@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url();?>assets/img/apple-icon.png">
@@ -17,6 +18,33 @@
   <link href="<?= base_url();?>assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url();?>assets/demo/demo.css" rel="stylesheet" />
+
+  <!--   Core JS Files   -->
+  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <!--  Notifications Plugin    -->
+  <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    function notification(message, type)
+    {
+
+        $.notify({
+            icon: "now-ui-icons ui-1_bell-53",
+            message: message
+
+            }, {
+            type: type,
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }
+  </script>
 </head>
 
 <body class="">
@@ -35,7 +63,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li >
+          <li>
             <a href="<?php echo site_url('Admin/home');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
@@ -44,7 +72,7 @@
           <li >
             <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
-              <p>Staff</p>
+              <p>STAFF</p>
             </a>
           </li>
           <li >
@@ -53,14 +81,14 @@
               <p>Customer</p>
             </a>
           </li>
-          <li >
+          <li>
             <a href="<?php echo site_url('Category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>
             </a>
           </li>
           <li class="active">
-            <a href="<?php echo site_url('Product/product');?>">
+            <a href="<?php echo site_url('product/product');?>">
               <i class="now-ui-icons location_map-big"></i>
               <p>Product</p>
             </a>
@@ -104,7 +132,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Product</a>
+            <a class="navbar-brand" href="#pablo">Staff</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -163,58 +191,26 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-        
-      </div>
+      </div>   
       <div class="content">
         <div class="row">
-        <div class="col-md-12">
-            <div class="card card-chart">
+          <div class="col-md-12">
+            <div class="card">
               <div class="card-header">
-                <h5 class="card-category">Product List</h5>
-                <h4 class="card-title"> Product Informations</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="<?php echo site_url('Product/addProduct');?>">Add Product</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
+              <h5 class="card-category">AddProduct Here</h5>
+                <h4 class="card-title">Add Your Product</h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                  <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>Short Desc</th>
-                      <th>Price</th>
-                    </thead>
-                    <tbody>
-                    <?php  
-                     foreach ($product->result() as $row)  
-                      {  
-                      ?><tr>  
-                      <td><?php echo $row->name;?></td>
-                      <td><?php echo $row->short_disc;?></td>
-                      <td><?php echo $row->price;?></td>
-                      <td><a href="<?php echo base_url('#' . $row->product_id); ?>">VIEW DETAILS</a></td>
-                      <td><a href="<?php echo base_url('#' . $row->product_id); ?>">EDIT</a></td> 
-                      <td><a href="<?php echo base_url('#' . $row->product_id); ?>">DELETE</a></td>   
-                      </tr>
-                    <?php }  
-                      ?> 
-                    </tbody>
-                  </table>
-                </div>
+              <?php echo $error;?> <!-- Error Message will show up here -->
+              <?php echo form_open_multipart('product/do_upload');?>
+              <?php echo "<input type='file' name='userfile' size='20' />"; ?>
+              <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
+              <?php echo "</form>"?>
               </div>
             </div>
           </div>
-          </div>
-      </div>
-      <footer class="footer">
+        </div>
+        <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
@@ -246,11 +242,6 @@
       </footer>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
-  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
@@ -261,13 +252,6 @@
   <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?= base_url();?>assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
-
-    });
-  </script>
 </body>
 
 </html>
