@@ -27,6 +27,9 @@ class Dashboard extends CI_Controller {
             if($user['role'] == 8) {
                 redirect(base_url('admin/home'));
                 exit;
+            }else if($user['role'] == 7){
+                redirect(base_url('Employees/home'));
+                exit;
             }else{
                 $this->load->view('templates/homeheader', $data);
                 $this->load->view('templates/home');
