@@ -35,7 +35,10 @@ class Account extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $user = $this->session->userdata('logged_in');
             if($user['role'] == 8) {
-                redirect(base_url('admin/index'));
+                redirect(base_url('Admin/index'));
+                exit;
+            }else if($user['role'] == 7){
+                redirect(base_url('Employees/home'));
                 exit;
             }else{
                 redirect(base_url('dashboard'));

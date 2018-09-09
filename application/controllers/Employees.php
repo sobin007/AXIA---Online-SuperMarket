@@ -16,10 +16,15 @@ class Employees extends CI_Controller {
     }
 
     public function home () {
-        $data['title'] = 'Staff';
+        $data['title'] = 'Employee';
         if ($this->session->userdata('logged_in')) {
-            $data['session_user'] = $this->session_user;
-            $this->load->view('staff/home');
+            if(!$this->session_user['role'] == 1){
+                $data['session_user'] = $this->session_user;
+                $this->load->view('employee/home');
+            }else{
+                redirect(base_url('Dashboard'));
+                exit; 
+            }
         }else{
             redirect(base_url('Dashboard'));
             exit;

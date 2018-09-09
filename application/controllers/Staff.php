@@ -7,19 +7,8 @@ class Staff extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        if($this->session->userdata('logged_in')) {
-            $this->session_user = $this->session->userdata('logged_in');
-            $user = $this->session->userdata('logged_in');
-            echo $user['role'];
-            if(!$user['role'] == 8){
-                redirect(base_url('Dashboard'));
-                exit;  
-            }
-        }else{
-            redirect(base_url('Dashboard'));
-            exit;
-        }
-        
+        $this->load->helper('url');
+        $this->session_user = $this->session->userdata('logged_in');
     }
     public function index () {
         $this->load->view('admin/staff');
@@ -28,7 +17,7 @@ class Staff extends CI_Controller {
         $data['title'] = 'Staff';
         if ($this->session->userdata('logged_in')) {
             $user = $this->session->userdata('logged_in');
-            if($user['role'] == 8){
+            if($user['role'] == '8'){
                 redirect(base_url('Dashboard'));
                 exit;  
             }else{
@@ -46,9 +35,9 @@ class Staff extends CI_Controller {
 
         $data['title'] = 'Add Staff';
         $this->load->model('Admin_model');
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session_user) {
             $user = $this->session->userdata('logged_in');
-            if(!$user['role'] == 8){
+            if(!$user['role'] == '8'){
                 redirect(base_url('Dashboard/home'));
                 exit;  
             }else{
@@ -57,8 +46,7 @@ class Staff extends CI_Controller {
                 $data['session_user'] = $this->session_user;
             } 
         }else{
-            redirect(base_url('Dashboard'));
-            exit; 
+            $this->load->view('pages/dashboard'); 
         }
     }
 
