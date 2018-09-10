@@ -14,44 +14,82 @@ class Dashboard extends CI_Controller {
     public function index() {
 
         $data['title'] = 'Dashboard';
-        $user = $this->session->userdata('logged_in');
-        $redirect = 'admin/home';
-        
-        if (!$user) {
+
+        if($this->session->userdata('logged_in')){
+            $redirect = 'Customer/home';
+            redirect($redirect);
+            exit;
+        }else if($this->session->userdata('stafflogged_in')){
+            $redirect = 'Employees/home';
+            redirect($redirect);
+            exit;
+        }elseif($this->session->userdata('adminlogged_in')){
+            $redirect = 'Admin/home';
+            redirect($redirect);
+            exit;
+        }else{
             $this->load->view('pages/dashboard');
-        }else {
-            $data['session_user'] = $this->session_user;
-            if($user['role'] == '8') {
-                $this->load->view('admin/home');
-            }else if($user['role'] == '7'){
-                $this->load->view('employee/home');
-            }else{
-                $this->load->view('templates/homeheader', $data);
-                $this->load->view('templates/home');
-                $this->load->view('templates/footer');
-            }
-        
         }
+ 
+
+        // $user = $this->session->userdata('logged_in');
+        // $redirect = 'admin/home';
+        
+        // if (!$user) {
+        //     $this->load->view('pages/dashboard');
+        // }else {
+        //     $data['session_user'] = $this->session_user;
+        //     if($user['role'] == '8') {
+        //         $redirect = 'Admin/home';
+        //     }else if($user['role'] == '7'){
+        //         $redirect = 'Employees/home';
+        //     }else{
+        //         $redirect = 'Customer/home';
+        //     }
+        //     redirect($redirect);
+        //     exit;
+        // }
     }
 
     public function home() {
+
         $data['title'] = 'Dashboard';
-        $user = $this->session->userdata('logged_in');
-        $redirect = 'admin/home';
-        
-        if (!$user) {
-            $this->load->view('pages/dashboard');
-        }else {
-            $data['session_user'] = $this->session_user;
-            if($user['role'] == '8') {
-                $redirect = 'Admin/home';
-            }else if($user['role'] == '7'){
-                $redirect = 'Employees/home';
-            }else{
-                $redirect = 'Customer/home';
-            }
+
+        if($this->session->userdata('logged_in')){
+            $redirect = 'Customer/home';
             redirect($redirect);
             exit;
+        }else if($this->session->userdata('stafflogged_in')){
+            $redirect = 'Employees/home';
+            redirect($redirect);
+            exit;
+        }elseif($this->session->userdata('adminlogged_in')){
+            $redirect = 'Admin/home';
+            redirect($redirect);
+            exit;
+        }else{
+            $this->load->view('pages/dashboard');
         }
+
+       
+
+        // $data['title'] = 'Dashboard';
+        // $user = $this->session->userdata('logged_in');
+        // $redirect = 'admin/home';
+        
+        // if (!$user) {
+        //     $this->load->view('pages/dashboard');
+        // }else {
+        //     $data['session_user'] = $this->session_user;
+        //     if($user['role'] == '8') {
+        //         $redirect = 'Admin/home';
+        //     }else if($user['role'] == '7'){
+        //         $redirect = 'Employees/home';
+        //     }else{
+        //         $redirect = 'Customer/home';
+        //     }
+        //     redirect($redirect);
+        //     exit;
+        // }
     }
 }

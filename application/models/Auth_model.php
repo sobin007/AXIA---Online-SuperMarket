@@ -27,8 +27,16 @@ class Auth_model extends CI_Model
                     'email' => $row->email,
                     'role' => $row->role
                 );
-                $this->session->set_userdata('logged_in', $sess_data);
-                $this->update_last_login($row->users_id);
+                if($row->role == 1){
+                    $this->session->set_userdata('logged_in', $sess_data);
+                    $this->update_last_login($row->users_id);
+                }else if($row->role == 7){
+                    $this->session->set_userdata('stafflogged_in', $sess_data);
+                    $this->update_last_login($row->users_id); 
+                }else{
+                    $this->session->set_userdata('adminlogged_in', $sess_data);
+                    $this->update_last_login($row->users_id);
+                }
             }
         } else {
             $notif['message'] = 'Username or password incorrect !';

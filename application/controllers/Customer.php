@@ -15,10 +15,14 @@ class Customer extends CI_Controller {
         $data['title'] = 'Customer';
         if ($this->session->userdata('logged_in')) {
             $data['session_user'] = $this->session_user;
+            $this->load->view('templates/homeheader', $data);
+            $this->load->view('templates/home');
+            $this->load->view('templates/footer');
+        }else{
+            redirect(base_url('dashboard'));
+            exit;
         }
-        $this->load->view('templates/homeheader', $data);
-        $this->load->view('templates/home');
-        $this->load->view('templates/footer');
+        
     }
 
     public function profile() {

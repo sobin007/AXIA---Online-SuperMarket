@@ -7,8 +7,8 @@ class Employees extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
-        $this->handler();
+        $this->session_user = $this->session->userdata('stafflogged_in');
+        //$this->handler();
     }
 
     public function handler(){
@@ -26,7 +26,7 @@ class Employees extends CI_Controller {
 
     public function home () {
         $data['title'] = 'Employee';
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('stafflogged_in')) {
             $data['session_user'] = $this->session_user;
             $this->load->view('employee/home');
         }

@@ -7,7 +7,7 @@ class Admin extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
+        $this->session_user = $this->session->userdata('adminlogged_in');
     }
 
     public function handler(){
@@ -24,13 +24,24 @@ class Admin extends CI_Controller {
     }
 
     public function index () {
-        $this->load->view('admin/home');
+        $data['title'] = 'ADMIN';
+        if ($this->session->userdata('adminlogged_in')) {
+            $data['session_user'] = $this->session_user;
+            $this->load->view('admin/home');
+        }else{
+            redirect('Dashboard/home');
+            exit;
+        }
     }
     public function home() {
         $data['title'] = 'ADMIN';
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('adminlogged_in')) {
             $data['session_user'] = $this->session_user;
+            $this->load->view('admin/home');
+        }else{
+            redirect('Dashboard/home');
+            exit;
         }
-        $this->load->view('admin/home');
+        
     }
 }

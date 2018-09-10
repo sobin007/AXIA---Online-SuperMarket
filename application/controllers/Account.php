@@ -35,17 +35,14 @@ class Account extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             redirect('Dashboard/home');
             exit;
-            // $user = $this->session->userdata('logged_in');
-            // if($user['role'] == 8) {
-            //     redirect(base_url('Admin/index'));
-            //     exit;
-            // }else if($user['role'] == 7){
-            //     redirect(base_url('Employees/home'));
-            //     exit;
-            // }else{
-            //     redirect(base_url('dashboard'));
-            //     exit;
-            // }
+        }
+        if ($this->session->userdata('adminlogged_in')) {
+            redirect('Dashboard/home');
+            exit;
+        }
+        if ($this->session->userdata('stafflogged_in')) {
+            redirect('Dashboard/home');
+            exit;
         }
         $this->load->view('templates/header',$data);
         $this->load->view('templates/login');
@@ -74,8 +71,8 @@ class Account extends CI_Controller {
             }
         }
 
-        if ($this->session->userdata('logged_in')) {
-            redirect(base_url('dashboard'));
+        if ($this->session->userdata('logged_in') || $this->session->userdata('stafflogged_in') || $this->session->userdata('adminlogged_in')) {
+            redirect(base_url('Dashboard/home'));
             exit;
         }
 
@@ -132,6 +129,8 @@ class Account extends CI_Controller {
 
     public function logout() {
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('stafflogged_in');
+        $this->session->unset_userdata('adminlogged_in');
         $this->session->sess_destroy();
         $this->output->set_header("Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0");
         $this->output->set_header("Pragma: no-cache");
