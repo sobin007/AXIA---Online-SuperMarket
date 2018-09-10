@@ -88,7 +88,7 @@
             </a>
           </li>
           <li class="active">
-            <a href="<?php echo site_url('product/product');?>">
+            <a href="<?php echo site_url('Product/product');?>">
               <i class="now-ui-icons location_map-big"></i>
               <p>Product</p>
             </a>
@@ -201,7 +201,9 @@
                 <h4 class="card-title">Add Your Product</h4>
               </div>
               <div class="card-body">
-              <?php echo $error;?> <!-- Error Message will show up here -->
+              <?php if(!empty(@$notif)){ ?>
+              <?php echo $error;?>
+              <?php } ?> <!-- Error Message will show up here -->
               <?php echo form_open_multipart('product/do_upload');?>
               <?php echo "<input type='file' name='userfile' size='20' />"; ?>
               <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
