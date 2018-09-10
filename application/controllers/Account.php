@@ -33,17 +33,19 @@ class Account extends CI_Controller {
         }
 
         if ($this->session->userdata('logged_in')) {
-            $user = $this->session->userdata('logged_in');
-            if($user['role'] == 8) {
-                redirect(base_url('Admin/index'));
-                exit;
-            }else if($user['role'] == 7){
-                redirect(base_url('Employees/home'));
-                exit;
-            }else{
-                redirect(base_url('dashboard'));
-                exit;
-            }
+            redirect('Dashboard/home');
+            exit;
+            // $user = $this->session->userdata('logged_in');
+            // if($user['role'] == 8) {
+            //     redirect(base_url('Admin/index'));
+            //     exit;
+            // }else if($user['role'] == 7){
+            //     redirect(base_url('Employees/home'));
+            //     exit;
+            // }else{
+            //     redirect(base_url('dashboard'));
+            //     exit;
+            // }
         }
         $this->load->view('templates/header',$data);
         $this->load->view('templates/login');

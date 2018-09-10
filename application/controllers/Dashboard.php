@@ -15,44 +15,42 @@ class Dashboard extends CI_Controller {
 
         $data['title'] = 'Dashboard';
         $user = $this->session->userdata('logged_in');
+        $redirect = 'admin/home';
         
         if (!$user) {
             $this->load->view('pages/dashboard');
         }else {
             $data['session_user'] = $this->session_user;
-            if($user['role'] == 8) {
-                redirect(base_url('admin/home'));
-                exit;
-            }else if($user['role'] == 7){
-                redirect(base_url('Employees/home'));
-                exit;
+            if($user['role'] === '8') {
+                $redirect = 'admin/home';
+            }else if($user['role'] == '7'){
+                $redirect = 'Employees/home';
             }else{
-                $this->load->view('templates/homeheader', $data);
-                $this->load->view('templates/home');
-                $this->load->view('templates/footer');
+                $redirect = 'Customer/home';
             }
+            redirect($redirect);
+            exit;
         }
     }
 
     public function home() {
         $data['title'] = 'Dashboard';
         $user = $this->session->userdata('logged_in');
+        $redirect = 'admin/home';
         
         if (!$user) {
             $this->load->view('pages/dashboard');
         }else {
             $data['session_user'] = $this->session_user;
-            if($user['role'] == 8) {
-                redirect(base_url('admin/home'));
-                exit;
-            }else if($user['role'] == 7){
-                redirect(base_url('Employees/home'));
-                exit;
+            if($user['role'] === '8') {
+                $redirect = 'admin/home';
+            }else if($user['role'] == '7'){
+                $redirect = 'Employees/home';
             }else{
-                $this->load->view('templates/homeheader', $data);
-                $this->load->view('templates/home');
-                $this->load->view('templates/footer');
+                $redirect = 'Customer/home';
             }
+            redirect($redirect);
+            exit;
         }
     }
 }
