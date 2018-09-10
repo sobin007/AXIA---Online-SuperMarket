@@ -41,13 +41,13 @@
           </li>
           <li>
             <a href="<?php echo site_url('Staff/staff');?>">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons users_single-02"></i>
               <p>STAFF</p>
             </a>
           </li>
           <li class="active">
             <a href="<?php echo site_url('User/customer');?>">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons users_single-02"></i>
               <p>Customer</p>
             </a>
           </li>
@@ -185,7 +185,8 @@
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
-                      <th>Name</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                       <th>Address</th>
                       <th>Phone</th>
                     </thead>
@@ -195,6 +196,7 @@
                       {  
                       ?><tr>  
                       <td><?php echo $row->cus_first_name;?></td>  
+                      <td><?php echo $row->cus_last_name;?></td>  
                       <td><?php echo $row->cus_address;?></td>
                       <td><?php echo $row->cus_phone;?></td>
                       </tr>

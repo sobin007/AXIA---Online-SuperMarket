@@ -71,8 +71,14 @@
           </li>
           <li class="active" >
             <a href="<?php echo site_url('Staff/staff');?>">
-              <i class="now-ui-icons design_app"></i>
+              <i class="now-ui-icons users_single-02"></i>
               <p>STAFF</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="<?php echo site_url('User/customer');?>">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Customer</p>
             </a>
           </li>
           <li>
