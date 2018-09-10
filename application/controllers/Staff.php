@@ -8,38 +8,30 @@ class Staff extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->session_user = $this->session->userdata('logged_in');
-        $redirect = 'admin/home';
+    }
+
+    public function handler(){
         
         if (!$this->session->userdata('logged_in')) {
             $this->load->view('pages/dashboard');
         }else {
             $data['session_user'] = $this->session_user;
             if($user['role'] != '8') {
-                $redirect = 'Dashboard/home';
-            }
-            redirect($redirect);
+            redirect('Dashboard/home');
             exit;
+            }
         }
     }
+
     public function index () {
         $this->load->view('admin/staff/staff');
     }
-    public function home () {
+    public function home(){
         $data['title'] = 'Staff';
         if ($this->session->userdata('logged_in')) {
-            $user = $this->session->userdata('logged_in');
-            if($user['role'] == '8'){
-                redirect(base_url('Dashboard'));
-                exit;  
-            }else{
-                $data['session_user'] = $this->session_user;
-                $this->load->view('admin/staff/staff');
-            } 
-        }else{
-            redirect(base_url('Dashboard'));
-            exit; 
+            $data['session_user'] = $this->session_user;
+            $this->load->view('admin/staff/staff');
         }
-      
     }
 
     public function staff() {
@@ -47,17 +39,9 @@ class Staff extends CI_Controller {
         $data['title'] = 'Add Staff';
         $this->load->model('Admin_model');
         if ($this->session_user) {
-            $user = $this->session->userdata('logged_in');
-            if(!$user['role'] == '8'){
-                redirect(base_url('Dashboard/home'));
-                exit;  
-            }else{
-                $data['staff'] =$this->Admin_model->getstaff();
-                $this->load->view('admin/staff/staff',$data);
-                $data['session_user'] = $this->session_user;
-            } 
-        }else{
-            $this->load->view('pages/dashboard'); 
+            $data['session_user'] = $this->session_user;
+            $data['staff'] =$this->Admin_model->getstaff();
+            $this->load->view('admin/staff/staff',$data);
         }
     }
 

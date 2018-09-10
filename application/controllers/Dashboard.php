@@ -21,15 +21,16 @@ class Dashboard extends CI_Controller {
             $this->load->view('pages/dashboard');
         }else {
             $data['session_user'] = $this->session_user;
-            if($user['role'] === '8') {
-                $redirect = 'admin/home';
+            if($user['role'] == '8') {
+                $this->load->view('admin/home');
             }else if($user['role'] == '7'){
-                $redirect = 'Employees/home';
+                $this->load->view('employee/home');
             }else{
-                $redirect = 'Customer/home';
+                $this->load->view('templates/homeheader', $data);
+                $this->load->view('templates/home');
+                $this->load->view('templates/footer');
             }
-            redirect($redirect);
-            exit;
+        
         }
     }
 
@@ -42,8 +43,8 @@ class Dashboard extends CI_Controller {
             $this->load->view('pages/dashboard');
         }else {
             $data['session_user'] = $this->session_user;
-            if($user['role'] === '8') {
-                $redirect = 'admin/home';
+            if($user['role'] == '8') {
+                $redirect = 'Admin/home';
             }else if($user['role'] == '7'){
                 $redirect = 'Employees/home';
             }else{

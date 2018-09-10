@@ -8,18 +8,6 @@ class Product extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->session_user = $this->session->userdata('logged_in');
-        $redirect = 'admin/home';
-        
-        if (!$this->session->userdata('logged_in')) {
-            $this->load->view('pages/dashboard');
-        }else {
-            $data['session_user'] = $this->session_user;
-            if($user['role'] != '7') {
-                $redirect = 'Dashboard/home';
-            }
-            redirect($redirect);
-            exit;
-        }
     }
 
     public function index () {

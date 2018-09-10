@@ -156,10 +156,10 @@
             <div class="card">
               <div class="card-header">
               <h5 class="card-category">Personal Informations</h5>
-                <h4 class="card-title">Add/Edit Personal Informations</h4>
+                <h4 class="card-title">View Personal Informations</h4>
               </div>
               <div class="card-body">
-                <form method="post" action="addstaff" class="form-horizontal" role="form">
+                <form method="post" action="" class="form-horizontal" role="form">
                 <?php if(!empty(@$notif)){ ?>
                     <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
                         <p><?php echo @$notif['message'];?></p>
