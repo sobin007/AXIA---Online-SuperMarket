@@ -175,7 +175,7 @@
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="<?php echo site_url('Staff/addstaff');?>">Add Staff</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="<?php echo site_url('Staff/staffOnHold');?>">Staff On Hold</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a>
                   </div>
@@ -202,7 +202,7 @@
                       <td><?php echo $row->designation;?></td>
                       <td><?php echo $row->salary;?></td> 
                       <td><a href="<?php echo base_url('staff/editStaff/' . $row->staff_id); ?>">EDIT</a></td> 
-                      <td><a href="<?php echo base_url('staff/deleteStaff/' . $row->staff_id); ?>">DELETE</a></td>
+                      <td><a href="<?php echo base_url('staff/update_staff_status/' . $row->staff_id); ?>">DISABLE</a></td>
                       </tr>
                     <?php }  
                       ?> 

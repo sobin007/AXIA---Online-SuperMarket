@@ -189,10 +189,21 @@
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
+            <div class="card card-chart">
               <div class="card-header">
               <h5 class="card-category">Add Staff Here</h5>
                 <h4 class="card-title">Add Your Staff</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="<?php echo site_url('Staff/addstaff');?>">Add Staff</a>
+                    <a class="dropdown-item" href="<?php echo site_url('Staff/staffOnHold');?>">Staff On Hold</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 <form method="post" action="addstaff" class="form-horizontal" role="form">

@@ -11,13 +11,23 @@ class Staff extends CI_Controller {
     }
 
     public function index () {
-        $this->load->view('admin/staff/staff');
+        $data['title'] = 'Staff';
+        if ($this->session->userdata('adminlogged_in')) {
+            $data['session_user'] = $this->session_user;
+            $this->load->view('admin/staff/staff');
+        }else{
+            redirect('Dashboard/home');
+            exit;
+        }
     }
     public function home(){
         $data['title'] = 'Staff';
         if ($this->session->userdata('adminlogged_in')) {
             $data['session_user'] = $this->session_user;
             $this->load->view('admin/staff/staff');
+        }else{
+            redirect('Dashboard/home');
+            exit;
         }
     }
 
@@ -29,6 +39,16 @@ class Staff extends CI_Controller {
             $data['session_user'] = $this->session_user;
             $data['staff'] =$this->Admin_model->getstaff();
             $this->load->view('admin/staff/staff',$data);
+        }
+    }
+
+    public function staffOnHold() {
+        $data['title'] = 'Staff On Hold';
+        $this->load->model('Admin_model');
+        if ($this->session_user) {
+            $data['session_user'] = $this->session_user;
+            $data['staff'] =$this->Admin_model->getstaffOnHold();
+            $this->load->view('admin/staff/staffonhold',$data);
         }
     }
 
@@ -80,10 +100,49 @@ class Staff extends CI_Controller {
     }
 
     public function deleteStaff($id) {
-        $this->load->model('Admin_model');
-        $this->Admin_model->deleteStaff($id);
-        redirect(base_url('staff/staff'));
-        exit;
+        if($this->session->userdata('adminlogged_in')){
+            $this->load->model('Admin_model');
+            $this->Admin_model->deleteStaff($id);
+            redirect(base_url('Staff/staff'));
+            exit;
+        }
+       
+    }
+
+    public function update_staff_status($id) {
+        if($this->session->userdata('adminlogged_in')){
+            $this->load->model('Admin_model');
+            $data = array(
+                'status'=> 0
+            );
+            $this->Admin_model->update_disable_Staff($data,$id);
+            $user =$this->Admin_model->getStaffOne($id);
+            $user_id = $user['user_id'];
+            $data1 = array(
+                'is_active'=> 0
+            );
+            $this->Admin_model->update_disable_User($data1,$user_id);
+            redirect(base_url('Staff/staff'));
+            exit;
+        }
+    }
+
+    public function update_staff_status_enable($id) {
+        if($this->session->userdata('adminlogged_in')){
+            $this->load->model('Admin_model');
+            $data = array(
+                'status'=> 1
+            );
+            $this->Admin_model->update_disable_Staff($data,$id);
+            $user =$this->Admin_model->getStaffOne($id);
+            $user_id = $user['user_id'];
+            $data1 = array(
+                'is_active'=> 1
+            );
+            $this->Admin_model->update_disable_User($data1,$user_id);
+            redirect(base_url('Staff/staffOnHold'));
+            exit;
+        }
     }
 
     public function editStaff($id) {

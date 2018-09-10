@@ -39,13 +39,13 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li>
+          <li class="active" >
             <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
               <p>STAFF</p>
             </a>
           </li>
-          <li class="active">
+          <li >
             <a href="<?php echo site_url('User/customer');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Customer</p>
@@ -102,7 +102,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Customer</a>
+            <a class="navbar-brand" href="#pablo">Staff</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -167,14 +167,14 @@
         <div class="col-lg-12">
             <div class="card card-chart">
               <div class="card-header">
-              <h5 class="card-category">Customer Details</h5>
-                <h4 class="card-title"> Customer Stats</h4>
+              <h5 class="card-category">Staff Details</h5>
+                <h4 class="card-title">Staff On Hold</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="<?php echo site_url('Staff/addstaff');?>">Add Staff</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a>
@@ -188,15 +188,21 @@
                       <th>Name</th>
                       <th>Address</th>
                       <th>Phone</th>
+                      <th>Designation</th>
+                      <th>Salary</th>
                     </thead>
                     <tbody>
                     <?php  
-                     foreach ($customer->result() as $row)  
+                     foreach ($staff->result() as $row)  
                       {  
                       ?><tr>  
-                      <td><?php echo $row->cus_first_name;?></td>  
-                      <td><?php echo $row->cus_address;?></td>
-                      <td><?php echo $row->cus_phone;?></td>
+                      <td><?php echo $row->first_name;?></td>  
+                      <td><?php echo $row->address;?></td>
+                      <td><?php echo $row->phone;?></td>
+                      <td><?php echo $row->designation;?></td>
+                      <td><?php echo $row->salary;?></td> 
+                      <td><a href="<?php echo base_url('staff/editStaff/' . $row->staff_id); ?>">EDIT</a></td> 
+                      <td><a href="<?php echo base_url('staff/update_staff_status_enable/' . $row->staff_id); ?>">ENABLE</a></td>
                       </tr>
                     <?php }  
                       ?> 

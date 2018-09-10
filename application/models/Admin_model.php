@@ -48,8 +48,66 @@ class Admin_model extends CI_Model
         $notif = array();
         $this->db->select('*');
         $this->db->from('staff');
+        $this->db->where('status',1);
         $query = $this->db->get();
         return $query; 
+    }
+
+    public function getstaffOnHold() {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->where('status',0);
+        $query = $this->db->get();
+        return $query; 
+    }
+
+    public function getStaffOne($staff_id) {
+        $staffedit = array();
+        $this->db->select('*');
+        $this->db->from('staff');
+        $this->db->where('staff_id',$staff_id);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            $row = $query->row();
+            $staffedit['first_name'] = $row->first_name;
+            $staffedit['last_name'] = $row->last_name;
+            $staffedit['address'] = $row->address;
+            $staffedit['phone'] = $row->phone;
+            $staffedit['designation'] = $row->designation;
+            $staffedit['salary'] = $row->salary;
+            $staffedit['dob'] = $row->dob;
+            $staffedit['gender'] = $row->gender;
+        }
+        return $staffedit; 
+    }
+
+    public function edit_staff_details($data, $staff_id) {
+        $this->db->where('staff_id', $staff_id);
+        $this->db->update('staff',$data);
+    }
+
+    public function deleteStaff($staff_id) {
+        $this->db->where('staff_id', $staff_id);
+        $this->db->delete('staff');
+        if($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        }else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
+    public function update_disable_Staff($data,$staff_id) {
+        $this->db->where('staff_id', $staff_id);
+        $this->db->update('staff',$data);
+    }
+
+    public function update_disable_User($data,$users_id) {
+        $this->db->where('users_id', $users_id);
+        $this->db->update('users',$data);
     }
 
     public function getAllCategory() {
@@ -88,43 +146,9 @@ class Admin_model extends CI_Model
         return $notif;
     }
 
-    public function deleteStaff($staff_id) {
-        $this->db->where('staff_id', $staff_id);
-        $this->db->delete('staff');
-        if($this->db->affected_rows() > 0) {
-            $notif['message'] = 'Saved successfully';
-            $notif['type'] = 'success';
-        }else {
-            $notif['message'] = 'Something wrong !';
-            $notif['type'] = 'danger';
-        }
-        return $notif;
-    }
+   
 
-    public function getStaffOne($staff_id) {
-        $staffedit = array();
-        $this->db->select('*');
-        $this->db->from('staff');
-        $this->db->where('staff_id',$staff_id);
-        $query = $this->db->get();
-        if ($query->num_rows() == 1) {
-            $row = $query->row();
-            $staffedit['first_name'] = $row->first_name;
-            $staffedit['last_name'] = $row->last_name;
-            $staffedit['address'] = $row->address;
-            $staffedit['phone'] = $row->phone;
-            $staffedit['designation'] = $row->designation;
-            $staffedit['salary'] = $row->salary;
-            $staffedit['dob'] = $row->dob;
-            $staffedit['gender'] = $row->gender;
-        }
-        return $staffedit; 
-    }
-
-    public function edit_staff_details($data, $staff_id) {
-        $this->db->where('staff_id', $staff_id);
-        $this->db->update('staff',$data);
-    }
+   
 
 
     public function addsubcategory($data) {
