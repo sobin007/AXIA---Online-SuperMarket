@@ -42,6 +42,12 @@
               <p>Dashboard</p>
             </a>
           </li>
+          <li >
+            <a href="<?php echo site_url('Employees/userProfile');?>">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

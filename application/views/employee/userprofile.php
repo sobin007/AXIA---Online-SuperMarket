@@ -27,70 +27,52 @@
 
   <!--  Notifications Plugin    -->
   <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    function notification(message, type)
+    {
+
+        $.notify({
+            icon: "now-ui-icons ui-1_bell-53",
+            message: message
+
+            }, {
+            type: type,
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }
+  </script>
 </head>
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="blue">
+    <div class="sidebar" data-color="green">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="<?php echo site_url('Employees/home');?>" class="simple-text logo-mini">
           
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="<?php echo site_url('Employees/home');?>" class="simple-text logo-normal">
           <strong>AXIA</strong>
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="<?php echo site_url('Admin/home');?>">
+            <a href="<?php echo site_url('Employees/home');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="active" >
-            <a href="<?php echo site_url('Staff/staff');?>">
-              <i class="now-ui-icons design_app"></i>
-              <p>STAFF</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('Category/category');?>">
-              <i class="now-ui-icons education_atom"></i>
-              <p>Category</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('product/product');?>">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>Product</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
+            <a href="<?php echo site_url('Employees/userProfile');?>">
               <i class="now-ui-icons users_single-02"></i>
               <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
             </a>
           </li>
         </ul>
@@ -108,7 +90,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Staff</a>
+            <a class="navbar-brand" href="#pablo">Profile</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -173,44 +155,70 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Edit Staff Details</h4>
+              <h5 class="card-category">Personal Informations</h5>
+                <h4 class="card-title">Add/Edit Personal Informations</h4>
               </div>
               <div class="card-body">
-                <form method="post" action="" class="form-horizontal" role="form">
+                <form method="post" action="addstaff" class="form-horizontal" role="form">
                 <?php if(!empty(@$notif)){ ?>
-                  <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
-                    <p><?php echo @$notif['message'];?></p>
-                    <span></span>
-                  </div>
-                <?php } 
-                  echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
-                ?>
-                <div class="row">
-                  
-                    <div class="col-md-6 px\r-1">
+                    <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
+                        <p><?php echo @$notif['message'];?></p>
+                        <span></span>
+                    </div>
+                    <?php } 
+                        echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
+                    ?>
+                  <div class="row">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" name= "uname" class="form-control" placeholder="User Name" value="<?php echo $this->input->post('uname');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
                       <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo @$staff['first_name'];?>">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo @$staff['last_name'];?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo @$staff['address'];?>" >
+                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo $this->input->post('first_name');?>">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo $this->input->post('last_name');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="<?php echo $this->input->post('email');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password"  name="password" class="form-control" placeholder="Password" value="<?php echo $this->input->post('password');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" value="<?php echo $this->input->post('confirm_password');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo $this->input->post('address');?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
                         <label>Mobile Number</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo @$staff['phone'];?>" >
+                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo $this->input->post('phone');?>" >
                       </div>
                     </div>
                   </div>
@@ -218,52 +226,41 @@
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
                         <label>Designation</label>
-                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="<?php echo @$staff['designation'];?>" >
+                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="<?php echo $this->input->post('designation');?>" >
                       </div>
                     </div>
                     <div class="col-md-4 px-1">
                       <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $this->input->post('dob');?>" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
                         <label>Salary</label>
-                        <input type="number" name="salary" class="form-control" placeholder="Salary" value="<?php echo @$staff['salary'];?>">
+                        <input type="number" name="salary" class="form-control" placeholder="Salary" value="<?php echo $this->input->post('salary');?>">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4 pr-1">
                       <div class="form-group">
-                        <label>Date of Birth</label>
-                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $staff['dob'];?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
                         <label>Gender</label>
-                        <?php if(!empty(@$staff)){ ?>
-                              <?php if($staff['gender'] == 1) { ?>
-                                <select id="gender" class="form-control" name="gender">
-                                  <option value="1" selected="selected">Male</option>
-                                  <option value="2">Female</option>
-                                </select>
-                              <?php }else{ ?>
-                                <select id="gender" class="form-control" name="gender">
-                                  <option value="1" >Male</option>
-                                  <option value="2" selected="selected">Female</option>
-                                </select>
-                          <?php }} ?>
+                        <select id="gender" class="form-control" name="gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                      <div class="col-md-4 px-1">
+                    <div class="col-md-4 px-1">
                       <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Save">
+                        <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Add Staff">
                       <div>
-                      </div>
+                    </div>
                     </div>
                   </div>
-                  </div>
-                  </div>
-                 
                 </form>
               </div>
             </div>
@@ -311,7 +308,6 @@
   <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?= base_url();?>assets/demo/demo.js"></script>
-
 </body>
 
 </html>

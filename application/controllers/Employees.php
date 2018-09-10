@@ -17,4 +17,12 @@ class Employees extends CI_Controller {
             $this->load->view('employee/home');
         }
     }
+
+    public function userProfile() {
+        $data['title'] = 'Employee Profile';
+        if ($this->session->userdata('logged_in')) {
+            $data['session_user'] = $this->session_user;
+            $this->load->view('employee/userprofile');
+        }
+    }
 }

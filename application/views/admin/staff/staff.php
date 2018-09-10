@@ -18,23 +18,11 @@
   <link href="<?= base_url();?>assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url();?>assets/demo/demo.css" rel="stylesheet" />
-
-  <!--   Core JS Files   -->
-  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
-  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-
-  <!--  Notifications Plugin    -->
-  <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="blue">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           
@@ -55,6 +43,12 @@
             <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
               <p>STAFF</p>
+            </a>
+          </li>
+          <li >
+            <a href="<?php echo site_url('User/customer');?>">
+              <i class="now-ui-icons design_app"></i>
+              <p>Customer</p>
             </a>
           </li>
           <li>
@@ -167,106 +161,57 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-      </div>   
+      </div>
       <div class="content">
         <div class="row">
-          <div class="col-md-12">
-            <div class="card">
+        <div class="col-lg-12">
+            <div class="card card-chart">
               <div class="card-header">
-                <h4 class="card-title">Edit Staff Details</h4>
+              <h5 class="card-category">Staff Details</h5>
+                <h4 class="card-title"> Employees Stats</h4>
+                <div class="dropdown">
+                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
+                    <i class="now-ui-icons loader_gear"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="<?php echo site_url('Staff/addstaff');?>">Add Staff</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
-                <form method="post" action="" class="form-horizontal" role="form">
-                <?php if(!empty(@$notif)){ ?>
-                  <div id="signupalert" class="alert alert-<?php echo @$notif['type'];?>" style="display:block">
-                    <p><?php echo @$notif['message'];?></p>
-                    <span></span>
-                  </div>
-                <?php } 
-                  echo '<script>window.setTimeout(function(){document.getElementById(\'signupalert\').style.display = "none";}, 2000);</script>';
-                ?>
-                <div class="row">
-                  
-                    <div class="col-md-6 px\r-1">
-                      <div class="form-group">
-                        <label>First Name</label>
-                        <input type="text" name= "first_name" class="form-control" placeholder="First Name" value="<?php echo @$staff['first_name'];?>">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" name ="last_name" class="form-control" placeholder="Last Name" value="<?php echo @$staff['last_name'];?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8 pr-1">
-                      <div class="form-group">
-                        <label>Address</label>
-                        <input type="text" name="address" class="form-control" placeholder="Home Address" value="<?php echo @$staff['address'];?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                      <div class="form-group">
-                        <label>Mobile Number</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="<?php echo @$staff['phone'];?>" >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>Designation</label>
-                        <input type="text" name="designation" class="form-control" placeholder="Designation" value="<?php echo @$staff['designation'];?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Salary</label>
-                        <input type="number" name="salary" class="form-control" placeholder="Salary" value="<?php echo @$staff['salary'];?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div class="form-group">
-                        <label>Date of Birth</label>
-                        <input type="date" name="dob" class="form-control" placeholder="dob" value="<?php echo $staff['dob'];?>" >
-                      </div>
-                    </div>
-                    <div class="col-md-4 px-1">
-                      <div class="form-group">
-                        <label>Gender</label>
-                        <?php if(!empty(@$staff)){ ?>
-                              <?php if($staff['gender'] == 1) { ?>
-                                <select id="gender" class="form-control" name="gender">
-                                  <option value="1" selected="selected">Male</option>
-                                  <option value="2">Female</option>
-                                </select>
-                              <?php }else{ ?>
-                                <select id="gender" class="form-control" name="gender">
-                                  <option value="1" >Male</option>
-                                  <option value="2" selected="selected">Female</option>
-                                </select>
-                          <?php }} ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-md-4 px-1">
-                      <div class="form-group">
-                      <input type="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Save">
-                      <div>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                  </div>
-                 
-                </form>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Phone</th>
+                      <th>Designation</th>
+                      <th>Salary</th>
+                    </thead>
+                    <tbody>
+                    <?php  
+                     foreach ($staff->result() as $row)  
+                      {  
+                      ?><tr>  
+                      <td><?php echo $row->first_name;?></td>  
+                      <td><?php echo $row->address;?></td>
+                      <td><?php echo $row->phone;?></td>
+                      <td><?php echo $row->designation;?></td>
+                      <td><?php echo $row->salary;?></td> 
+                      <td><a href="<?php echo base_url('staff/editStaff/' . $row->staff_id); ?>">EDIT</a></td> 
+                      <td><a href="<?php echo base_url('staff/deleteStaff/' . $row->staff_id); ?>">DELETE</a></td>
+                      </tr>
+                    <?php }  
+                      ?> 
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
         <footer class="footer">
@@ -301,6 +246,11 @@
       </footer>
     </div>
   </div>
+  <!--   Core JS Files   -->
+  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
@@ -311,7 +261,6 @@
   <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?= base_url();?>assets/demo/demo.js"></script>
-
 </body>
 
 </html>

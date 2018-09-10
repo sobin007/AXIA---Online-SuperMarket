@@ -22,7 +22,7 @@ class Staff extends CI_Controller {
         }
     }
     public function index () {
-        $this->load->view('admin/staff');
+        $this->load->view('admin/staff/staff');
     }
     public function home () {
         $data['title'] = 'Staff';
@@ -33,7 +33,7 @@ class Staff extends CI_Controller {
                 exit;  
             }else{
                 $data['session_user'] = $this->session_user;
-                $this->load->view('admin/staff');
+                $this->load->view('admin/staff/staff');
             } 
         }else{
             redirect(base_url('Dashboard'));
@@ -53,7 +53,7 @@ class Staff extends CI_Controller {
                 exit;  
             }else{
                 $data['staff'] =$this->Admin_model->getstaff();
-                $this->load->view('admin/staff',$data);
+                $this->load->view('admin/staff/staff',$data);
                 $data['session_user'] = $this->session_user;
             } 
         }else{
