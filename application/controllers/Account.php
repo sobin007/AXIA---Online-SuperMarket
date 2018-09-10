@@ -7,7 +7,13 @@ class Account extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
+        if($this->session->userdata('logged_in')){
+            $this->session_user = $this->session->userdata('logged_in');
+        }else if($this->session->userdata('stafflogged_in')){
+            $this->session_user = $this->session->userdata('stafflogged_in');
+        }elseif($this->session->userdata('adminlogged_in')){
+            $this->session_user = $this->session->userdata('adminlogged_in');
+        } 
     }
 
     public function index () {
@@ -32,18 +38,11 @@ class Account extends CI_Controller {
             }
         }
 
-        if ($this->session->userdata('logged_in')) {
-            redirect('Dashboard/home');
+        if ($this->session->userdata('logged_in') || $this->session->userdata('stafflogged_in') || $this->session->userdata('adminlogged_in')) {
+            redirect(base_url('Dashboard/home'));
             exit;
         }
-        if ($this->session->userdata('adminlogged_in')) {
-            redirect('Dashboard/home');
-            exit;
-        }
-        if ($this->session->userdata('stafflogged_in')) {
-            redirect('Dashboard/home');
-            exit;
-        }
+
         $this->load->view('templates/header',$data);
         $this->load->view('templates/login');
         $this->load->view('templates/footer');
@@ -78,15 +77,6 @@ class Account extends CI_Controller {
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/register');
-        $this->load->view('templates/footer');
-    }
-
-    public function dashboard() {
-
-        $data['title'] = 'Dashboard';
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/home');
         $this->load->view('templates/footer');
     }
 

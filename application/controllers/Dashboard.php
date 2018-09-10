@@ -8,7 +8,13 @@ class Dashboard extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in'); 
+        if($this->session->userdata('logged_in')){
+            $this->session_user = $this->session->userdata('logged_in');
+        }else if($this->session->userdata('stafflogged_in')){
+            $this->session_user = $this->session->userdata('stafflogged_in');
+        }elseif($this->session->userdata('adminlogged_in')){
+            $this->session_user = $this->session->userdata('adminlogged_in');
+        } 
     }
 
     public function index() {
@@ -30,25 +36,6 @@ class Dashboard extends CI_Controller {
         }else{
             $this->load->view('pages/dashboard');
         }
- 
-
-        // $user = $this->session->userdata('logged_in');
-        // $redirect = 'admin/home';
-        
-        // if (!$user) {
-        //     $this->load->view('pages/dashboard');
-        // }else {
-        //     $data['session_user'] = $this->session_user;
-        //     if($user['role'] == '8') {
-        //         $redirect = 'Admin/home';
-        //     }else if($user['role'] == '7'){
-        //         $redirect = 'Employees/home';
-        //     }else{
-        //         $redirect = 'Customer/home';
-        //     }
-        //     redirect($redirect);
-        //     exit;
-        // }
     }
 
     public function home() {
@@ -70,26 +57,5 @@ class Dashboard extends CI_Controller {
         }else{
             $this->load->view('pages/dashboard');
         }
-
-       
-
-        // $data['title'] = 'Dashboard';
-        // $user = $this->session->userdata('logged_in');
-        // $redirect = 'admin/home';
-        
-        // if (!$user) {
-        //     $this->load->view('pages/dashboard');
-        // }else {
-        //     $data['session_user'] = $this->session_user;
-        //     if($user['role'] == '8') {
-        //         $redirect = 'Admin/home';
-        //     }else if($user['role'] == '7'){
-        //         $redirect = 'Employees/home';
-        //     }else{
-        //         $redirect = 'Customer/home';
-        //     }
-        //     redirect($redirect);
-        //     exit;
-        // }
     }
 }

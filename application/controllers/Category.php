@@ -7,20 +7,7 @@ class Category extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
-    }
-
-    public function handler(){
-        
-        if (!$this->session->userdata('logged_in')) {
-            $this->load->view('pages/dashboard');
-        }else {
-            $data['session_user'] = $this->session_user;
-            if($user['role'] != '8') {
-            redirect('Dashboard/home');
-            exit;
-            }
-        }
+        $this->session_user = $this->session->userdata('adminlogged_in');
     }
 
     public function index () {
@@ -32,7 +19,7 @@ class Category extends CI_Controller {
 
         $data['title'] = 'Category';
         $this->load->model('Admin_model');
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('adminlogged_in')) {
             $data['session_user'] = $this->session_user;
         }
         if (count($_POST)) {
@@ -59,7 +46,7 @@ class Category extends CI_Controller {
 
         $data['title'] = 'Add Category';
         $this->load->model('Admin_model');
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('adminlogged_in')) {
             $data['session_user'] = $this->session_user;
         }
         if (count($_POST)) {

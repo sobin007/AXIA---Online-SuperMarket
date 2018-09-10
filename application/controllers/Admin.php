@@ -10,19 +10,6 @@ class Admin extends CI_Controller {
         $this->session_user = $this->session->userdata('adminlogged_in');
     }
 
-    public function handler(){
-        
-        if (!$this->session->userdata('logged_in')) {
-            $this->load->view('pages/dashboard');
-        }else {
-            $data['session_user'] = $this->session_user;
-            if($user['role'] != '8') {
-            redirect('Dashboard/home');
-            exit;
-            }
-        }
-    }
-
     public function index () {
         $data['title'] = 'ADMIN';
         if ($this->session->userdata('adminlogged_in')) {

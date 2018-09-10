@@ -7,7 +7,7 @@ class Product extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->session_user = $this->session->userdata('logged_in');
+        $this->session_user = $this->session->userdata('adminlogged_in');
     }
 
     public function index () {
@@ -18,7 +18,7 @@ class Product extends CI_Controller {
 
         $data['title'] = 'Product';
         $this->load->model('Admin_model');
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('adminlogged_in')) {
             $data['session_user'] = $this->session_user;
         }
 
