@@ -232,12 +232,19 @@ class Admin_model extends CI_Model
     }
 
     public function getProductOne($p_id) {
-        $notif = array();
+        $product = array();
         $this->db->select('*');
         $this->db->from('products');
-        $this->db->where('product_id', $p_id); 
+        $this->db->where('product_id',$p_id);
         $query = $this->db->get();
-        return $query; 
+        if ($query->num_rows() == 1) {
+            $row = $query->row();
+            //$customer = $row;
+            $product['name'] = $row->name;
+            $product['short_disc'] = $row->short_disc;
+            $product['img'] = $row->product_img;
+        }
+        return $product; 
     }
 
 }

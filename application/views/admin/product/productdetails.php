@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url();?>assets/img/apple-icon.png">
@@ -17,6 +18,33 @@
   <link href="<?= base_url();?>assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url();?>assets/demo/demo.css" rel="stylesheet" />
+
+  <!--   Core JS Files   -->
+  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
+  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
+  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <!--  Notifications Plugin    -->
+  <script src="<?= base_url();?>assets/js/plugins/bootstrap-notify.js"></script>
+  <script>
+    function notification(message, type)
+    {
+
+        $.notify({
+            icon: "now-ui-icons ui-1_bell-53",
+            message: message
+
+            }, {
+            type: type,
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }
+  </script>
 </head>
 
 <body class="">
@@ -35,7 +63,7 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li >
+          <li>
             <a href="<?php echo site_url('Admin/home');?>">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
@@ -44,7 +72,7 @@
           <li >
             <a href="<?php echo site_url('Staff/staff');?>">
               <i class="now-ui-icons design_app"></i>
-              <p>Staff</p>
+              <p>STAFF</p>
             </a>
           </li>
           <li >
@@ -53,7 +81,7 @@
               <p>Customer</p>
             </a>
           </li>
-          <li >
+          <li>
             <a href="<?php echo site_url('Category/category');?>">
               <i class="now-ui-icons education_atom"></i>
               <p>Category</p>
@@ -163,58 +191,84 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-        
-      </div>
+      </div>   
       <div class="content">
         <div class="row">
-        <div class="col-md-12">
-            <div class="card card-chart">
+          <div class="col-md-12">
+            <div class="card">
               <div class="card-header">
-                <h5 class="card-category">Product List</h5>
-                <h4 class="card-title"> Product Informations</h4>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-                    <i class="now-ui-icons loader_gear"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="<?php echo site_url('Product/addProduct');?>">Add Product</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
-                  </div>
-                </div>
+              <h5 class="card-category">AddProduct Here</h5>
+                <h4 class="card-title">Add Your Product</h4>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                  <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>Short Desc</th>
-                      <th>Price</th>
-                    </thead>
-                    <tbody>
-                    <?php  
-                     foreach ($product->result() as $row)  
-                      {  
-                      ?><tr>  
-                      <td><?php echo $row->name;?></td>
-                      <td><?php echo $row->short_disc;?></td>
-                      <td><?php echo $row->price;?></td>
-                      <td><a href="<?php echo base_url('Product/getProductDetails/' . $row->product_id); ?>">VIEW DETAILS</a></td>
-                      <td><a href="<?php echo base_url('#' . $row->product_id); ?>">EDIT</a></td> 
-                      <td><a href="<?php echo base_url('#' . $row->product_id); ?>">DELETE</a></td>   
-                      </tr>
-                    <?php }  
-                      ?> 
-                    </tbody>
-                  </table>
-                </div>
+              <?php if(!empty(@$notif)){ ?>
+              <?php echo $error;?>
+              <?php } ?> <!-- Error Message will show up here -->
+              <?php echo form_open_multipart('product/do_upload');?>
+              <div class="products">
+		<div class="container">
+			<div class="agileinfo_single">
+				
+				<div class="col-md-4 agileinfo_single_left">
+					<img id="example" src="<?= base_url();?>uploads/<?php echo $product['img']; ?>" alt=" " class="img-responsive">
+				</div>
+				<div class="col-md-8 agileinfo_single_right">
+				<h5 class="title">
+                      <?php echo $product['name']; ?>
+                    </h5>
+					<div class="rating1">
+						<span class="starRating">
+							<input id="rating5" type="radio" name="rating" value="5">
+							<label for="rating5">5</label>
+							<input id="rating4" type="radio" name="rating" value="4">
+							<label for="rating4">4</label>
+							<input id="rating3" type="radio" name="rating" value="3" checked="">
+							<label for="rating3">3</label>
+							<input id="rating2" type="radio" name="rating" value="2">
+							<label for="rating2">2</label>
+							<input id="rating1" type="radio" name="rating" value="1">
+							<label for="rating1">1</label>
+						</span>
+					</div>
+					<div class="w3agile_description">
+						<h4>Description :</h4>
+						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+							officia deserunt mollit anim id est laborum.Duis aute irure dolor in 
+							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+							pariatur.</p>
+					</div>
+					<div class="snipcart-item block">
+						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+							<h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+						</div>
+						<div class="snipcart-details agileinfo_single_right_details">
+							<form action="#" method="post">
+								<fieldset>
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="add" value="1">
+									<input type="hidden" name="business" value=" ">
+									<input type="hidden" name="item_name" value="pulao basmati rice">
+									<input type="hidden" name="amount" value="21.00">
+									<input type="hidden" name="discount_amount" value="1.00">
+									<input type="hidden" name="currency_code" value="USD">
+									<input type="hidden" name="return" value=" ">
+									<input type="hidden" name="cancel_return" value=" ">
+									<input type="submit" name="submit" value="Add to cart" class="button">
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+              <?php echo "</form>"?>
               </div>
             </div>
           </div>
-          </div>
-      </div>
-      <footer class="footer">
+        </div>
+        <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
@@ -246,11 +300,6 @@
       </footer>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/popper.min.js"></script>
-  <script src="<?= base_url();?>assets/js/core/bootstrap.min.js"></script>
-  <script src="<?= base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
@@ -261,13 +310,6 @@
   <script src="<?= base_url();?>assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="<?= base_url();?>assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
-
-    });
-  </script>
 </body>
 
 </html>

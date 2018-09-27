@@ -107,5 +107,17 @@ class Product extends CI_Controller {
             $this->load->view('admin/product/addproduct', $error);
         }
     }
+
+    public function getProductDetails($p_id){
+        $data['title'] = 'View Product Details';
+        $this->load->model('Admin_model');
+        if ($this->session->userdata('adminlogged_in')) {
+            $data['session_user'] = $this->session_user;
+            $data['product'] =$this->Admin_model->getProductOne($p_id);
+            $this->load->view('admin/product/productdetails',$data);
+        }else{
+
+        }
+    }
     
 }
