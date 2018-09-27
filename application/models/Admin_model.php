@@ -217,4 +217,18 @@ class Admin_model extends CI_Model
         return $query; 
     }
 
+    public function AddProduct($data) {
+        $notif = array();
+        $this->db->insert('products', $data);
+        $product_id = $this->db->insert_id();
+        if ($this->db->affected_rows() > 0) {
+            $notif['message'] = 'Saved successfully';
+            $notif['type'] = 'success';
+        } else {
+            $notif['message'] = 'Something wrong !';
+            $notif['type'] = 'danger';
+        }
+        return $notif;
+    }
+
 }

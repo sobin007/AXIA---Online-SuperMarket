@@ -75,6 +75,10 @@ class Product extends CI_Controller {
     }
 
     public function do_upload(){
+
+        $data['title'] = 'Add Product';
+        $this->load->model('Admin_model');
+
         $config = array(
         'upload_path' => "./uploads/",
         'allowed_types' => "gif|jpg|png|jpeg|pdf",
@@ -84,10 +88,18 @@ class Product extends CI_Controller {
         'max_width' => "1024"
         );
         $this->load->library('upload', $config);
-        if($this->upload->do_upload())
-        {
-        $data = array('upload_data' => $this->upload->data());
-        $this->load->view('admin/product/product',$data);
+        if($this->upload->do_upload()) {
+            $data = array('upload_data' => $this->upload->data());
+            $image_info = $this->upload->data();
+
+            $data1 = array(
+                'name' => $this->input->post('name'),
+                'short_disc' => $this->input->post('short_disc'),
+                'price' => $this->input->post('price'),
+                'product_img' => $image_info['file_name']
+            );
+            $data['notif'] = $this->Admin_model->addProduct($data1);
+            $this->load->view('admin/product/product',$data);
         }
         else
         {

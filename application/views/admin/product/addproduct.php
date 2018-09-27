@@ -132,7 +132,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Staff</a>
+            <a class="navbar-brand" href="#pablo">Product</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -205,6 +205,26 @@
               <?php echo $error;?>
               <?php } ?> <!-- Error Message will show up here -->
               <?php echo form_open_multipart('product/do_upload');?>
+              <div class="row">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" name= "name" class="form-control" placeholder="Product Name" value="<?php echo $this->input->post('name');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Short Description</label>
+                        <input type="text" name= "short_disc" class="form-control" placeholder="Short Description" value="<?php echo $this->input->post('short_disc');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" name ="price" class="form-control" placeholder="Price" value="<?php echo $this->input->post('price');?>">
+                      </div>
+                    </div>
+                  </div>
               <?php echo "<input type='file' name='userfile' size='20' />"; ?>
               <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
               <?php echo "</form>"?>
