@@ -80,12 +80,12 @@ class Product extends CI_Controller {
         $this->load->model('Admin_model');
 
         $config = array(
-        'upload_path' => "./uploads/",
-        'allowed_types' => "gif|jpg|png|jpeg|pdf",
-        'overwrite' => TRUE,
-        'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-        'max_height' => "768",
-        'max_width' => "1024"
+            'upload_path' => "./uploads/",
+            'allowed_types' => "gif|jpg|png|jpeg|pdf",
+            'overwrite' => TRUE,
+            'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+            'max_height' => "768",
+            'max_width' => "1024"
         );
         $this->load->library('upload', $config);
         if($this->upload->do_upload()) {
@@ -99,13 +99,13 @@ class Product extends CI_Controller {
                 'product_img' => $image_info['file_name']
             );
             $data['notif'] = $this->Admin_model->addProduct($data1);
+            $data[product] = $this->Admin_model->getAllProduct();
             $this->load->view('admin/product/product',$data);
         }
-        else
-        {
-        $error = array('error' => $this->upload->display_errors());
-        $this->load->view('admin/product/addproduct', $error);
+        else {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('admin/product/addproduct', $error);
         }
-        }
+    }
     
 }

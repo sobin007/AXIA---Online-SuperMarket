@@ -231,4 +231,13 @@ class Admin_model extends CI_Model
         return $notif;
     }
 
+    public function getProductOne($p_id) {
+        $notif = array();
+        $this->db->select('*');
+        $this->db->from('products');
+        $this->db->where('product_id', $p_id); 
+        $query = $this->db->get();
+        return $query; 
+    }
+
 }
