@@ -18,6 +18,7 @@
   <link href="<?= base_url();?>assets/css/now-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url();?>assets/demo/demo.css" rel="stylesheet" />
+  <!-- <link href="<?= base_url();?>assets/css/style.css" rel="stylesheet" type="text/css" media="all" /> -->
 
   <!--   Core JS Files   -->
   <script src="<?= base_url();?>assets/js/core/jquery.min.js"></script>
@@ -191,83 +192,44 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-sm">
-      </div>   
+      </div>
       <div class="content">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-8">
             <div class="card">
               <div class="card-header">
-              <h5 class="card-category">AddProduct Here</h5>
-                <h4 class="card-title">Add Your Product</h4>
+                <h5 class="title"><?php echo $product['name']; ?></h5>
               </div>
               <div class="card-body">
-              <?php if(!empty(@$notif)){ ?>
-              <?php echo $error;?>
-              <?php } ?> <!-- Error Message will show up here -->
-              <?php echo form_open_multipart('product/do_upload');?>
-              <div class="products">
-		<div class="container">
-			<div class="agileinfo_single">
-				
-				<div class="col-md-4 agileinfo_single_left">
-					<img id="example" src="<?= base_url();?>uploads/<?php echo $product['img']; ?>" alt=" " class="img-responsive">
-				</div>
-				<div class="col-md-8 agileinfo_single_right">
-				<h5 class="title">
-                      <?php echo $product['name']; ?>
-                    </h5>
-					<div class="rating1">
-						<span class="starRating">
-							<input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label>
-							<input id="rating4" type="radio" name="rating" value="4">
-							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked="">
-							<label for="rating3">3</label>
-							<input id="rating2" type="radio" name="rating" value="2">
-							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label>
-						</span>
-					</div>
-					<div class="w3agile_description">
-						<h4>Description :</h4>
-						<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
-							officia deserunt mollit anim id est laborum.Duis aute irure dolor in 
-							reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-							pariatur.</p>
-					</div>
-					<div class="snipcart-item block">
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing">$21.00 <span>$25.00</span></h4>
-						</div>
-						<div class="snipcart-details agileinfo_single_right_details">
-							<form action="#" method="post">
-								<fieldset>
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1">
-									<input type="hidden" name="business" value=" ">
-									<input type="hidden" name="item_name" value="pulao basmati rice">
-									<input type="hidden" name="amount" value="21.00">
-									<input type="hidden" name="discount_amount" value="1.00">
-									<input type="hidden" name="currency_code" value="USD">
-									<input type="hidden" name="return" value=" ">
-									<input type="hidden" name="cancel_return" value=" ">
-									<input type="submit" name="submit" value="Add to cart" class="button">
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-              <?php echo "</form>"?>
+              <div>
+						      <h4>Short Description :</h4>
+						      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+							      officia deserunt mollit anim id est laborum.Duis aute irure dolor in 
+							      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+							      pariatur.</p>
+					      </div>
+                <div>
+						      <h4>Description :</h4>
+						      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+							      officia deserunt mollit anim id est laborum.Duis aute irure dolor in 
+							      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
+							      pariatur.</p>
+					      </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="card-body">
+                <div >
+                  <img src="<?= base_url('');?>uploads/<?php echo $product['img']; ?>" alt="...">
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>   
+      
         <footer class="footer">
         <div class="container-fluid">
           <nav>
