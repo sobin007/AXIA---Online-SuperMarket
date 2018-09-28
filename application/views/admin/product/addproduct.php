@@ -220,8 +220,28 @@
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
+                        <label>Desciption</label>
+                        <input type="text" name ="desc" class="form-control" placeholder="Description" value="<?php echo $this->input->post('desc');?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-md-4 pr-1">
+                      <div class="form-group">
                         <label>Price</label>
-                        <input type="text" name ="price" class="form-control" placeholder="Price" value="<?php echo $this->input->post('price');?>">
+                        <input type="text" name= "price" class="form-control" placeholder="Price" value="<?php echo $this->input->post('price');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Quatity</label>
+                        <input type="text" name= "quatity" class="form-control" placeholder="Quatity" value="<?php echo $this->input->post('quatity');?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Saved Price</label>
+                        <input type="text" name ="saved_price" class="form-control" placeholder="Saved Price" value="<?php echo $this->input->post('saved_price');?>">
                       </div>
                     </div>
                   </div>

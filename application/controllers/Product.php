@@ -91,11 +91,16 @@ class Product extends CI_Controller {
         if($this->upload->do_upload()) {
             $data = array('upload_data' => $this->upload->data());
             $image_info = $this->upload->data();
-
+            date_default_timezone_set('Asia/Kolkata');
+            $date = date('Y-m-d H:i:s');
             $data1 = array(
                 'name' => $this->input->post('name'),
                 'short_disc' => $this->input->post('short_disc'),
+                'description' => $this->input->post('desc'),
                 'price' => $this->input->post('price'),
+                'quatity' => $this->input->post('quatity'),
+                'save_price' => $this->input->post('saved_price'),
+                'created_At' => $date,
                 'product_img' => $image_info['file_name']
             );
             $data['notif'] = $this->Admin_model->addProduct($data1);
