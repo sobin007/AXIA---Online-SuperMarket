@@ -225,8 +225,30 @@
                       </div>
                     </div>
                   </div>
-              <?php echo "<input type='file' name='userfile' size='20' />"; ?>
-              <?php echo "<input type='submit' name='submit' value='upload' /> ";?>
+                  <style>
+                    input[type="file"] {
+                    display: none;
+                    }
+                  </style>
+                  <div class="row">
+                    <div class="col-md-4 px-1">
+                      <div  class="form-group">
+                        <label for="file-upload" class="custom-file-upload form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px; padding: 10px;">
+                        <i class="fa fa-cloud-upload"></i> Select Image
+                        </label>
+                        <input type="file" name="userfile"  value="Add Product" size="20" id="file-upload"/>
+                        <!-- <input type="file" name="userfile"  value="Add Product" size="20"> -->
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <input type="submit" name="submit" class="form-control" style="background :#3399cc; color :#fff; margin-Left : 8px; margin-Bottom : 8px;" value="Add Product">
+                      <div>
+                    </div>
+                  </div
               <?php echo "</form>"?>
               </div>
             </div>
